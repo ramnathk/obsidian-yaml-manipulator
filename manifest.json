@@ -1,0 +1,10 @@
+{
+	"id": "yaml-manipulator",
+	"name": "YAML Manipulator",
+	"version": "1.0.2",
+	"minAppVersion": "0.15.0",
+	"description": "Bulk manipulate YAML front matter with condition-based rules and preview.",
+	"author": "ramnathk",
+	"authorUrl": "",
+	"isDesktopOnly": true
+}

@@ -1,0 +1,61 @@
+{
+	"name": "yaml-manipulator",
+	"version": "0.1.0",
+	"description": "Bulk manipulate YAML front matter with condition-based rules and preview",
+	"main": "main.js",
+	"scripts": {
+		"dev": "node esbuild.config.mjs",
+		"build": "tsc -noEmit -skipLibCheck && node esbuild.config.mjs production",
+		"build:public": "node scripts/build-public.js",
+		"docs:dev": "vitepress dev docs-site",
+		"docs:build": "vitepress build docs-site",
+		"docs:preview": "vitepress preview docs-site",
+		"version": "node version-bump.mjs && git add manifest.json versions.json",
+		"test": "vitest run",
+		"test:watch": "vitest",
+		"test:ui": "vitest --ui",
+		"test:coverage": "vitest --coverage",
+		"generate:tests": "tsx tests/generators/generateFromExamples.ts",
+		"prepare": "husky"
+	},
+	"keywords": [
+		"obsidian",
+		"yaml",
+		"frontmatter",
+		"bulk-edit"
+	],
+	"author": "ramnathk",
+	"license": "MIT",
+	"lint-staged": {
+		"*.svelte": [
+			"npm run build"
+		],
+		"src/**/*.ts": [
+			"npm test"
+		]
+	},
+	"dependencies": {
+		"gray-matter": "^4.0.3",
+		"luxon": "^3.4.4"
+	},
+	"devDependencies": {
+		"@types/luxon": "^3.4.2",
+		"@types/node": "^20.0.0",
+		"@typescript-eslint/eslint-plugin": "5.29.0",
+		"@typescript-eslint/parser": "5.29.0",
+		"@vitest/coverage-v8": "^1.0.4",
+		"@vitest/ui": "^1.0.4",
+		"builtin-modules": "3.3.0",
+		"esbuild": "0.17.3",
+		"esbuild-svelte": "^0.8.0",
+		"husky": "^9.1.7",
+		"lint-staged": "^16.2.7",
+		"obsidian": "latest",
+		"svelte": "^4.2.8",
+		"tslib": "2.4.0",
+		"tsx": "^4.7.0",
+		"typescript": "4.7.4",
+		"vitepress": "^1.6.4",
+		"vitest": "^1.0.4"
+	}
+}

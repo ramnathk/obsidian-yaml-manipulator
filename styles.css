@@ -1,0 +1,235 @@
+/* YAML Manipulator Plugin Styles */
+
+/* Modal overrides */
+.modal.yaml-rule-builder-modal {
+	width: 700px;
+	max-width: 90vw;
+}
+
+.yaml-manipulator-modal {
+	padding: 0;
+	width: 100%;
+	max-height: 85vh;
+	overflow-y: auto;
+}
+
+.yaml-manipulator-modal h2 {
+	margin: 0 0 var(--size-4-4) 0;
+	padding: var(--size-4-4) var(--size-4-6);
+	background: var(--background-secondary);
+	border-bottom: 1px solid var(--background-modifier-border);
+	font-size: var(--font-ui-large);
+	font-weight: var(--font-semibold);
+}
+
+.yaml-manipulator-modal .modal-content {
+	padding: var(--size-4-4) var(--size-4-6);
+}
+
+/* Form fields */
+.yaml-manipulator-modal .field {
+	margin-bottom: var(--size-4-4);
+}
+
+.yaml-manipulator-modal label {
+	display: block;
+	margin-bottom: var(--size-2-2);
+	font-size: var(--font-ui-small);
+	font-weight: var(--font-medium);
+	color: var(--text-normal);
+}
+
+.yaml-manipulator-modal input[type="text"],
+.yaml-manipulator-modal textarea,
+.yaml-manipulator-modal select {
+	width: 100%;
+	padding: var(--size-4-2) var(--size-4-3);
+	border: 1px solid var(--background-modifier-border);
+	border-radius: var(--radius-s);
+	background: var(--background-primary);
+	color: var(--text-normal);
+	font-family: var(--font-interface);
+	font-size: var(--font-ui-small);
+	transition: border-color 0.1s ease;
+}
+
+.yaml-manipulator-modal input[type="text"]:focus,
+.yaml-manipulator-modal textarea:focus,
+.yaml-manipulator-modal select:focus {
+	border-color: var(--interactive-accent);
+	outline: none;
+	box-shadow: 0 0 0 2px var(--background-modifier-border-focus);
+}
+
+.yaml-manipulator-modal textarea {
+	resize: vertical;
+	min-height: 80px;
+	font-family: var(--font-monospace);
+	font-size: var(--font-ui-smaller);
+	line-height: 1.5;
+}
+
+/* Rule selector */
+.yaml-manipulator-modal .rule-selector {
+	display: flex;
+	gap: var(--size-4-2);
+	margin-bottom: var(--size-4-6);
+	align-items: center;
+	padding: var(--size-4-3);
+	background: var(--background-secondary);
+	border-radius: var(--radius-s);
+}
+
+.yaml-manipulator-modal .rule-selector label {
+	margin: 0;
+	white-space: nowrap;
+	flex-shrink: 0;
+}
+
+.yaml-manipulator-modal .rule-selector select {
+	flex: 1;
+	min-width: 250px;
+	margin: 0;
+}
+
+.yaml-manipulator-modal .rule-selector button {
+	flex-shrink: 0;
+}
+
+/* Radio buttons */
+.yaml-manipulator-modal .radio-group {
+	display: flex;
+	gap: var(--size-4-4);
+	margin-bottom: var(--size-4-2);
+}
+
+.yaml-manipulator-modal .radio-group label {
+	display: flex;
+	align-items: center;
+	gap: var(--size-2-2);
+	font-weight: normal;
+	cursor: pointer;
+	margin: 0;
+}
+
+.yaml-manipulator-modal input[type="radio"] {
+	cursor: pointer;
+}
+
+/* Checkboxes */
+.yaml-manipulator-modal input[type="checkbox"] {
+	cursor: pointer;
+	margin-right: var(--size-2-2);
+}
+
+/* Buttons */
+.yaml-manipulator-modal .button-group {
+	display: flex;
+	gap: var(--size-4-2);
+	justify-content: space-between;
+	margin-top: var(--size-4-6);
+	padding-top: var(--size-4-4);
+	border-top: 1px solid var(--background-modifier-border);
+}
+
+.yaml-manipulator-modal .button-group .left-buttons {
+	display: flex;
+	gap: var(--size-4-2);
+}
+
+.yaml-manipulator-modal .button-group .right-buttons {
+	display: flex;
+	gap: var(--size-4-2);
+}
+
+.yaml-manipulator-modal button {
+	padding: var(--size-4-2) var(--size-4-4);
+	border-radius: var(--radius-s);
+	border: 1px solid var(--background-modifier-border);
+	background: var(--interactive-normal);
+	color: var(--text-normal);
+	cursor: pointer;
+	font-size: var(--font-ui-small);
+	font-weight: var(--font-medium);
+	transition: background-color 0.1s ease;
+}
+
+.yaml-manipulator-modal button:hover {
+	background: var(--interactive-hover);
+}
+
+.yaml-manipulator-modal button:active {
+	background: var(--interactive-active);
+}
+
+.yaml-manipulator-modal button.mod-cta,
+.yaml-manipulator-modal button.cta {
+	background: var(--interactive-accent);
+	color: var(--text-on-accent);
+	border-color: var(--interactive-accent);
+}
+
+.yaml-manipulator-modal button.mod-cta:hover,
+.yaml-manipulator-modal button.cta:hover {
+	background: var(--interactive-accent-hover);
+}
+
+.yaml-manipulator-modal button.mod-warning,
+.yaml-manipulator-modal button.danger {
+	background: var(--color-red);
+	color: var(--text-on-accent);
+	border-color: var(--color-red);
+}
+
+.yaml-manipulator-modal button.mod-warning:hover,
+.yaml-manipulator-modal button.danger:hover {
+	background: var(--color-red-hover);
+}
+
+.yaml-manipulator-modal button.secondary {
+	background: var(--background-secondary);
+}
+
+.yaml-manipulator-modal button.secondary:hover {
+	background: var(--background-secondary-alt);
+}
+
+/* Error messages */
+.yaml-manipulator-modal .error {
+	color: var(--text-error);
+	font-size: var(--font-ui-smaller);
+	margin-top: var(--size-2-2);
+	padding: var(--size-2-2) var(--size-4-2);
+	background: var(--background-modifier-error);
+	border-radius: var(--radius-s);
+	border-left: 3px solid var(--text-error);
+}
+
+/* Field groups */
+.yaml-manipulator-modal .field-group {
+	background: var(--background-secondary);
+	padding: var(--size-4-3);
+	border-radius: var(--radius-s);
+	margin-bottom: var(--size-4-4);
+}
+
+/* Placeholder styling */
+.yaml-manipulator-modal textarea::placeholder,
+.yaml-manipulator-modal input::placeholder {
+	color: var(--text-faint);
+	font-style: italic;
+}
+
+/* Focus states */
+.yaml-manipulator-modal input[type="text"]:focus,
+.yaml-manipulator-modal textarea:focus {
+	border-color: var(--interactive-accent);
+}
+
+/* Disabled states */
+.yaml-manipulator-modal input:disabled,
+.yaml-manipulator-modal textarea:disabled,
+.yaml-manipulator-modal select:disabled {
+	opacity: 0.5;
+	cursor: not-allowed;
+}
