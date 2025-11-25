@@ -9,6 +9,7 @@ import { App, TFile } from 'obsidian';
 import { FileResult, Rule } from '../types';
 import { executeRule } from './ruleEngine';
 import { writeFrontmatter } from '../yaml/yamlProcessor';
+import { LIMITS } from '../constants';
 
 export interface BatchResult {
 	/** Individual file results */
@@ -110,9 +111,10 @@ export async function processBatch(
 				});
 			}
 
-			// Yield to UI thread every 10 files
-			if (i % 10 === 0) {
-				await new Promise(resolve => setTimeout(resolve, 0));
+			// Yield to UI thread every N files to keep Obsidian responsive
+			// Use smaller batch size for better UI responsiveness
+			if (i % LIMITS.BATCH_YIELD_INTERVAL === 0) {
+				await new Promise(resolve => setTimeout(resolve, LIMITS.BATCH_THROTTLE_MS));
 			}
 		} catch (error) {
 			// If processing fails, add error result
@@ -141,12 +143,31 @@ export async function processBatch(
 }
 
 /**
- * Create backup of a file
+ * Create backup of a file with path validation
+ * Prevents path traversal attacks by validating backup path stays within vault
  */
 async function createBackup(app: App, file: TFile): Promise<void> {
-	const backupPath = file.path + '.bak';
-	const content = await app.vault.read(file);
+	// Validate file path doesn't contain path traversal
+	if (file.path.includes('..')) {
+		throw new Error(`Invalid file path for backup (contains '..'): ${file.path}`);
+	}
 
+	const backupPath = file.path + '.bak';
+
+	// Additional validation: ensure backup path is normalized
+	const normalizedPath = backupPath.replace(/\\/g, '/').replace(/\/\//g, '/');
+	if (normalizedPath !== backupPath) {
+		throw new Error(`Invalid backup path (not normalized): ${backupPath}`);
+	}
+
+	// Validate backup path doesn't escape vault root
+	// Obsidian's vault.create() and vault.adapter.write() handle this,
+	// but we add explicit validation for robustness
+	if (normalizedPath.startsWith('/') || normalizedPath.includes('..')) {
+		throw new Error(`Invalid backup path (potential path traversal): ${backupPath}`);
+	}
+
+	const content = await app.vault.read(file);
 	const backupExists = await app.vault.adapter.exists(backupPath);
 
 	if (backupExists) {

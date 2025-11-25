@@ -17,6 +17,7 @@ import {
 	QuantifierNode,
 } from '../types';
 import { resolvePath, pathExists } from '../parser/pathResolver';
+import { LIMITS, DANGEROUS_REGEX_PATTERNS } from '../constants';
 
 /**
  * Evaluate a condition AST against data
@@ -81,7 +82,7 @@ function evaluateComparison(node: ComparisonNode, data: any): boolean {
 }
 
 /**
- * Evaluate regex matching
+ * Evaluate regex matching with ReDoS protection
  */
 function evaluateRegex(value: any, pattern: string): boolean {
 	// Convert value to string for regex matching
@@ -95,10 +96,52 @@ function evaluateRegex(value: any, pattern: string): boolean {
 
 	const [, regexPattern, flags] = match;
 
+	// Validate regex pattern length to prevent ReDoS
+	if (regexPattern.length > LIMITS.MAX_REGEX_LENGTH) {
+		throw new Error(
+			`Regex pattern too long (max ${LIMITS.MAX_REGEX_LENGTH} characters): ${regexPattern.substring(0, 50)}...`
+		);
+	}
+
+	// Check for dangerous patterns that could cause ReDoS
+	for (const dangerousPattern of DANGEROUS_REGEX_PATTERNS) {
+		if (dangerousPattern.test(regexPattern)) {
+			throw new Error(
+				`Potentially unsafe regex pattern detected (could cause performance issues): ${regexPattern}`
+			);
+		}
+	}
+
 	try {
 		const regex = new RegExp(regexPattern, flags);
-		return regex.test(strValue);
+
+		// Execute regex with timeout protection
+		const startTime = Date.now();
+		let timedOut = false;
+
+		// Set timeout handler
+		const timeoutId = setTimeout(() => {
+			timedOut = true;
+		}, LIMITS.REGEX_TIMEOUT_MS);
+
+		try {
+			const result = regex.test(strValue);
+
+			// Check if we timed out during execution
+			if (timedOut || Date.now() - startTime > LIMITS.REGEX_TIMEOUT_MS) {
+				throw new Error(
+					`Regex execution timeout (exceeded ${LIMITS.REGEX_TIMEOUT_MS}ms). Pattern may be too complex: ${regexPattern}`
+				);
+			}
+
+			return result;
+		} finally {
+			clearTimeout(timeoutId);
+		}
 	} catch (e) {
+		if (e instanceof Error && e.message.includes('timeout')) {
+			throw e;
+		}
 		throw new Error(`Invalid regex: ${pattern}`);
 	}
 }

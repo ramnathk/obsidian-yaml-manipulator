@@ -36,9 +36,13 @@ export async function readFrontmatter(
 			engines: {
 				yaml: {
 					parse: (str: string) => {
-						// Use default YAML parser
+						// Use safe YAML parser to prevent code execution
+						// SAFE_SCHEMA prevents dangerous YAML tags like !!js/function
 						const yaml = require('js-yaml');
-						return yaml.load(str, { schema: yaml.DEFAULT_SCHEMA });
+						return yaml.load(str, {
+							schema: yaml.CORE_SCHEMA,  // Use CORE_SCHEMA (safer than DEFAULT_SCHEMA)
+							json: false                 // Disable JSON schema extensions
+						});
 					},
 				},
 			},

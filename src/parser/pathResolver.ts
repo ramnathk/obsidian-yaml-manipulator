@@ -4,6 +4,8 @@
  * Based on requirements Section 3.1
  */
 
+import { LIMITS } from '../constants';
+
 /**
  * Resolve a path in an object and return the value
  *
@@ -268,10 +270,11 @@ interface PathSegment {
 }
 
 /**
- * Parse a path string into segments
+ * Parse a path string into segments with depth and length limits
  *
  * @param path - Dot notation path (e.g., "metadata.author" or "items[0].name")
  * @returns Array of path segments
+ * @throws Error if path exceeds maximum length or depth
  *
  * @example
  * parsePathSegments("metadata.author")
@@ -285,11 +288,26 @@ export function parsePathSegments(path: string): PathSegment[] {
 		return [];
 	}
 
+	// Validate path length to prevent infinite loops
+	if (path.length > LIMITS.MAX_PATH_LENGTH) {
+		throw new Error(
+			`Path too long (max ${LIMITS.MAX_PATH_LENGTH} characters): ${path.substring(0, 50)}...`
+		);
+	}
+
 	const segments: PathSegment[] = [];
 	let current = '';
 	let i = 0;
+	let depth = 0;
 
 	while (i < path.length) {
+		// Validate depth to prevent infinite loops
+		if (depth > LIMITS.MAX_PATH_DEPTH) {
+			throw new Error(
+				`Path too deeply nested (max ${LIMITS.MAX_PATH_DEPTH} levels): ${path.substring(0, 50)}...`
+			);
+		}
+
 		const char = path[i];
 
 		if (char === '.') {
@@ -297,6 +315,7 @@ export function parsePathSegments(path: string): PathSegment[] {
 			if (current.length > 0) {
 				segments.push({ type: 'property', key: current });
 				current = '';
+				depth++;
 			}
 			i++;
 		} else if (char === '[') {
@@ -304,6 +323,7 @@ export function parsePathSegments(path: string): PathSegment[] {
 			if (current.length > 0) {
 				segments.push({ type: 'property', key: current });
 				current = '';
+				depth++;
 			}
 
 			// Find closing ]
@@ -320,6 +340,7 @@ export function parsePathSegments(path: string): PathSegment[] {
 			}
 
 			segments.push({ type: 'index', index });
+			depth++;
 			i = closeIndex + 1;
 		} else {
 			// Regular character

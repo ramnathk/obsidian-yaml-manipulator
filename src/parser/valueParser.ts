@@ -4,6 +4,38 @@
  * Based on requirements Section 3.2 and 5.1
  */
 
+import { DANGEROUS_OBJECT_KEYS } from '../constants';
+
+/**
+ * Check if an object or nested objects contain dangerous keys
+ * Prevents prototype pollution attacks
+ *
+ * Only checks for enumerable own properties, not inherited properties
+ */
+function hasDangerousKeys(obj: any): boolean {
+	if (typeof obj !== 'object' || obj === null) {
+		return false;
+	}
+
+	// Check current level for dangerous keys (only own enumerable properties)
+	for (const key of DANGEROUS_OBJECT_KEYS) {
+		if (Object.prototype.hasOwnProperty.call(obj, key)) {
+			return true;
+		}
+	}
+
+	// Recursively check nested objects and arrays
+	for (const value of Object.values(obj)) {
+		if (typeof value === 'object' && value !== null) {
+			if (hasDangerousKeys(value)) {
+				return true;
+			}
+		}
+	}
+
+	return false;
+}
+
 /**
  * Parse a value from a string, auto-detecting type
  *
@@ -179,11 +211,11 @@ export function parseBoolean(input: string): boolean | null {
 }
 
 /**
- * Parse an array from JSON string
+ * Parse an array from JSON string with prototype pollution protection
  *
  * @param input - JSON array string
  * @returns Parsed array
- * @throws Error if JSON is malformed
+ * @throws Error if JSON is malformed or contains dangerous keys
  *
  * @example
  * parseArray('["a", "b", "c"]')         // => ["a", "b", "c"]
@@ -199,18 +231,28 @@ export function parseArray(input: string): any[] {
 			throw new Error('Not an array');
 		}
 
+		// Check for prototype pollution in array elements
+		if (hasDangerousKeys(parsed)) {
+			throw new Error(
+				'Array contains unsafe properties (__proto__, constructor, prototype). This could be a security issue.'
+			);
+		}
+
 		return parsed;
 	} catch (error) {
+		if (error instanceof Error && error.message.includes('unsafe properties')) {
+			throw error;
+		}
 		throw new Error(`Failed to parse array: ${input}`);
 	}
 }
 
 /**
- * Parse an object from JSON string
+ * Parse an object from JSON string with prototype pollution protection
  *
  * @param input - JSON object string
  * @returns Parsed object
- * @throws Error if JSON is malformed
+ * @throws Error if JSON is malformed or contains dangerous keys
  *
  * @example
  * parseObject('{"key": "value"}')                    // => {key: "value"}
@@ -225,8 +267,18 @@ export function parseObject(input: string): any {
 			throw new Error('Not an object');
 		}
 
+		// Check for prototype pollution
+		if (hasDangerousKeys(parsed)) {
+			throw new Error(
+				'Object contains unsafe properties (__proto__, constructor, prototype). This could be a security issue.'
+			);
+		}
+
 		return parsed;
 	} catch (error) {
+		if (error instanceof Error && error.message.includes('unsafe properties')) {
+			throw error;
+		}
 		throw new Error(`Failed to parse object: ${input}`);
 	}
 }
