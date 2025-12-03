@@ -119,8 +119,6 @@ export interface RuleOptions {
 export interface YamlManipulatorSettings {
 	/** Whether to create backups by default */
 	defaultBackup: boolean;
-	/** Maximum files to process in one batch */
-	maxFilesPerBatch: number;
 	/** Timeout for vault scanning (ms) */
 	scanTimeout: number;
 	/** Show debug information */

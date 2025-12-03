@@ -171,8 +171,7 @@
 
 			const scanResult = await scanFiles(
 				plugin.app.vault,
-				rule.scope,
-				{ maxFiles: plugin.data.settings.maxFilesPerBatch || 100 }
+				rule.scope
 			);
 
 			debugLog('Files scanned:', scanResult.matched.length);
@@ -224,8 +223,7 @@
 
 			const scanResult = await scanFiles(
 				plugin.app.vault,
-				rule.scope,
-				{ maxFiles: plugin.data.settings.maxFilesPerBatch || 100 }
+				rule.scope
 			);
 
 			if (scanResult.matched.length === 0) {

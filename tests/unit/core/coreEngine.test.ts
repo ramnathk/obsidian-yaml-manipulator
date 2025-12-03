@@ -88,7 +88,6 @@ describe('Core Engine', () => {
 
 			expect(result.matched).toHaveLength(3);
 			expect(result.scanned).toBe(3);
-			expect(result.exceededLimit).toBe(false);
 			expect(result.timedOut).toBe(false);
 		});
 
@@ -105,17 +104,6 @@ describe('Core Engine', () => {
 
 			expect(result.matched.length).toBeLessThanOrEqual(4);
 			expect(result.scanned).toBeLessThanOrEqual(4);
-		});
-
-		it('should respect maxFiles limit', async () => {
-			const vault = new MockVault();
-			const files = Array.from({ length: 100 }, (_, i) => createMockFile(`file${i}.md`));
-			vault.setMockFiles(files);
-
-			const result = await scanFiles(vault as any, { type: 'vault' }, { maxFiles: 50 });
-
-			expect(result.scanned).toBeLessThanOrEqual(50);
-			expect(result.exceededLimit).toBe(true);
 		});
 
 		it('should handle empty vault', async () => {

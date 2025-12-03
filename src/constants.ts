@@ -19,12 +19,6 @@ export const LIMITS = {
 	/** Maximum path length in characters */
 	MAX_PATH_LENGTH: 500,
 
-	/** Maximum files per batch (default setting) */
-	MAX_FILES_PER_BATCH: 1000,
-
-	/** Maximum files per batch (upper limit for user settings) */
-	MAX_FILES_PER_BATCH_UPPER: 10000,
-
 	/** Scan timeout in milliseconds */
 	SCAN_TIMEOUT_MS: 30000,
 

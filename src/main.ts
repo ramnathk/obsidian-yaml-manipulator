@@ -94,21 +94,6 @@ class YamlManipulatorSettingTab extends PluginSettingTab {
 			);
 
 		new Setting(containerEl)
-			.setName('Max Files Per Batch')
-			.setDesc('Maximum number of files to process in one operation')
-			.addText(text =>
-				text
-					.setValue(String(this.plugin.data.settings.maxFilesPerBatch))
-					.onChange(async value => {
-						const num = parseInt(value);
-						if (!isNaN(num) && num > 0) {
-							this.plugin.data.settings.maxFilesPerBatch = num;
-							await this.plugin.saveSettings();
-						}
-					})
-			);
-
-		new Setting(containerEl)
 			.setName('Debug Mode')
 			.setDesc('Show debug information in console')
 			.addToggle(toggle =>

@@ -1,13 +1,17 @@
 # Changelog
 
 ## [1.1.2] - 2025-12-03
-**7** commits in this release
+**9** commits in this release
 
 
 
 ### ✨ Features
 
 - Implement conditional debug logging (227e8b7)
+
+### 🔧 Refactoring
+
+- Remove maxFilesPerBatch setting (666d5cb)
 
 ### 📚 Documentation
 
@@ -19,6 +23,7 @@
 
 ### 📝 Other Changes
 
+- Karthikeyan R ()
 -  1 skipped (All tes)
 - ramnathk ()
 - Karthikeyan R ()

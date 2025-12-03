@@ -41,9 +41,9 @@ export function createMockPlugin(overrides: Record<string, any> = {}) {
 		data: {
 			rules: [],
 			settings: {
-				maxFilesPerBatch: 100,
 				defaultBackup: true,
-				backupFolder: '.backups'
+				scanTimeout: 30000,
+				debug: false
 			}
 		},
 		loadData: vi.fn().mockResolvedValue({ rules: [], settings: {} }),

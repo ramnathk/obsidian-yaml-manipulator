@@ -96,13 +96,17 @@ describe('RuleBuilderModal UI Tests', () => {
 			data: {
 				rules: [],
 				settings: {
-					maxFilesPerBatch: 100
+					defaultBackup: true,
+					scanTimeout: 30000,
+					debug: false
 				}
 			},
 			loadData: vi.fn().mockResolvedValue({
 				rules: [],
 				settings: {
-					maxFilesPerBatch: 100
+					defaultBackup: true,
+					scanTimeout: 30000,
+					debug: false
 				}
 			}),
 			saveData: vi.fn().mockResolvedValue(undefined),
@@ -544,12 +548,14 @@ describe('RuleBuilderModal UI Tests', () => {
 				data: {
 					rules: savedRules,  // Rules present from the start
 					settings: {
-						maxFilesPerBatch: 100
+						defaultBackup: true,
+						scanTimeout: 30000,
+						debug: false
 					}
 				},
 				loadData: vi.fn().mockResolvedValue({
 					rules: savedRules,
-					settings: { maxFilesPerBatch: 100 }
+					settings: { defaultBackup: true, scanTimeout: 30000, debug: false }
 				}),
 				saveData: vi.fn().mockResolvedValue(undefined),
 				saveSettings: vi.fn().mockResolvedValue(undefined)
@@ -604,12 +610,14 @@ describe('RuleBuilderModal UI Tests', () => {
 				data: {
 					rules: savedRules,  // Rules present from the start
 					settings: {
-						maxFilesPerBatch: 100
+						defaultBackup: true,
+						scanTimeout: 30000,
+						debug: false
 					}
 				},
 				loadData: vi.fn().mockResolvedValue({
 					rules: savedRules,
-					settings: { maxFilesPerBatch: 100 }
+					settings: { defaultBackup: true, scanTimeout: 30000, debug: false }
 				}),
 				saveData: vi.fn().mockResolvedValue(undefined),
 				saveSettings: vi.fn().mockResolvedValue(undefined)

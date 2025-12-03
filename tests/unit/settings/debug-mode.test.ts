@@ -23,7 +23,6 @@ describe('Debug Mode', () => {
 			rules: [],
 			settings: {
 				defaultBackup: true,
-				maxFilesPerBatch: 100,
 				scanTimeout: 30000,
 				debug: true, // Debug enabled
 			},

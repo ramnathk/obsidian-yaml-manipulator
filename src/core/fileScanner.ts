@@ -16,15 +16,11 @@ export interface ScanResult {
 	scanned: number;
 	/** Scan duration in ms */
 	duration: number;
-	/** Whether max file limit was exceeded */
-	exceededLimit: boolean;
 	/** Whether scan timed out */
 	timedOut: boolean;
 }
 
 export interface ScanOptions {
-	/** Maximum files to scan */
-	maxFiles?: number;
 	/** Timeout in milliseconds */
 	timeout?: number;
 }
@@ -43,12 +39,10 @@ export async function scanFiles(
 	options: ScanOptions = {}
 ): Promise<ScanResult> {
 	const startTime = Date.now();
-	const maxFiles = options.maxFiles || 1000;
 	const timeout = options.timeout || 30000;
 
 	const matched: TFile[] = [];
 	let scanned = 0;
-	let exceededLimit = false;
 	let timedOut = false;
 
 	// Get all markdown files
@@ -68,17 +62,11 @@ export async function scanFiles(
 		);
 	}
 
-	// Scan files with limits
+	// Scan files with timeout protection
 	for (const file of scopedFiles) {
 		// Check timeout
 		if (Date.now() - startTime > timeout) {
 			timedOut = true;
-			break;
-		}
-
-		// Check limit
-		if (scanned >= maxFiles) {
-			exceededLimit = true;
 			break;
 		}
 
@@ -90,7 +78,6 @@ export async function scanFiles(
 		matched,
 		scanned,
 		duration: Date.now() - startTime,
-		exceededLimit,
 		timedOut,
 	};
 }

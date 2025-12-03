@@ -170,64 +170,6 @@ describe('File Scanner - Folder Matching', () => {
 		});
 	});
 
-	describe('Max files limit', () => {
-		it('should respect maxFiles option', async () => {
-			const vault = createMockVault([
-				'file1.md',
-				'file2.md',
-				'file3.md',
-				'file4.md',
-				'file5.md',
-			]);
-
-			const scope: RuleScope = {
-				type: 'vault',
-			};
-
-			const result = await scanFiles(vault, scope, { maxFiles: 3 });
-
-			// Should stop after scanning 3 files
-			expect(result.scanned).toBeLessThanOrEqual(3);
-		});
-
-		it('should use default maxFiles if not specified', async () => {
-			const vault = createMockVault([
-				'file1.md',
-				'file2.md',
-				'file3.md',
-			]);
-
-			const scope: RuleScope = {
-				type: 'vault',
-			};
-
-			const result = await scanFiles(vault, scope);
-
-			// Should scan all files when no limit specified (default 1000)
-			expect(result.scanned).toBe(3);
-			expect(result.matched).toHaveLength(3);
-		});
-
-		it('should stop scanning when maxFiles reached even with condition', async () => {
-			const vault = createMockVault([
-				'file1.md',
-				'file2.md',
-				'file3.md',
-				'file4.md',
-				'file5.md',
-			]);
-
-			const scope: RuleScope = {
-				type: 'vault',
-			};
-
-			// Even if we would match more files, stop at maxFiles
-			const result = await scanFiles(vault, scope, { maxFiles: 2 });
-
-			expect(result.scanned).toBeLessThanOrEqual(2);
-		});
-	});
-
 	describe('Edge cases', () => {
 		it('should handle empty folder', async () => {
 			const vault = createMockVault([
