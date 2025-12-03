@@ -36,10 +36,10 @@ interface CategoryTests {
 
 /**
  * Parse examples from VitePress documentation
- * Single source of truth: docs-site/reference/examples.md
+ * Single source of truth: docs-site/reference/test-suite.md
  */
 function parseExamplesFile(): Example[] {
-  const examplesPath = path.join(__dirname, '../../docs-site/reference/examples.md');
+  const examplesPath = path.join(__dirname, '../../docs-site/reference/test-suite.md');
   const content = fs.readFileSync(examplesPath, 'utf8');
 
   const examples: Example[] = [];
@@ -58,12 +58,17 @@ function parseExamplesFile(): Example[] {
     });
   }
 
-  // Extract examples from each section (VitePress format)
-  // Matches: ### Title\n\n**Input:**\n```yaml\n...\n```\n\n**Condition:** `...`\n\n**Action:** `...`\n\n**Output:**\n```yaml\n...\n```
-  const exampleRegex = /###\s+(.+?)\n\n\*\*Input:\*\*\n```yaml\n([\s\S]+?)```\n\n\*\*Condition:\*\*\s*`([^`]+)`\n\n\*\*Action:\*\*\s*`([^`]+)`\n\n\*\*Output:\*\*\n```yaml\n([\s\S]+?)```/g;
+  // Extract examples from each section - supports two formats:
+  // 1. VitePress format: ### Title\n\n**Input:**\n```yaml\n...\n```\n\n**Condition:** `...`\n\n**Action:** `...`\n\n**Output:**\n```yaml\n...\n```
+  // 2. Comprehensive format: **Example X.X.X: Title**\n```yaml\n# Input\n---\n...\n---\n\n# Rule\nCondition: ...\nAction: ...\n\n# Output\n---\n...\n---\n```
+
+  const vitepressRegex = /###\s+(.+?)\n\n\*\*Input:\*\*\n```yaml\n([\s\S]+?)```\n\n\*\*Condition:\*\*\s*`([^`]+)`\n\n\*\*Action:\*\*\s*`([^`]+)`\n\n\*\*Output:\*\*\n```yaml\n([\s\S]+?)```/g;
+  const comprehensiveRegex = /\*\*Example\s+[\d.]+:\s+(.+?)\*\*\n```yaml\n([\s\S]+?)```/g;
 
   let exampleNum = 1;
-  while ((match = exampleRegex.exec(content)) !== null) {
+
+  // Parse VitePress format examples
+  while ((match = vitepressRegex.exec(content)) !== null) {
     const exampleTitle = match[1];
     const inputYaml = match[2];
     const condition = match[3];
@@ -142,6 +147,42 @@ function parseExamplesFile(): Example[] {
       },
       output: outputYaml.trim(),
       expectedStatus
+    });
+  }
+
+  // Parse comprehensive format examples (old format with # Input, # Rule, # Output)
+  while ((match = comprehensiveRegex.exec(content)) !== null) {
+    const exampleTitle = match[1];
+    const yamlBlock = match[2];
+    const exampleId = String(exampleNum++);
+
+    // Parse the YAML block using the existing parser
+    const parsed = parseYamlBlock(yamlBlock);
+    if (!parsed) {
+      console.warn(`⚠️  Skipping example "${exampleTitle}" - could not parse YAML block`);
+      continue;
+    }
+
+    // Find which section this example belongs to
+    const examplePos = match.index;
+    let section = '';
+    for (let i = sections.length - 1; i >= 0; i--) {
+      if (sections[i].pos < examplePos) {
+        section = sections[i].title;
+        break;
+      }
+    }
+
+    // Create example from comprehensive format
+    examples.push({
+      id: exampleId,
+      section,
+      title: exampleTitle,
+      input: parsed.input,
+      rule: parsed.rule,
+      output: parsed.output,
+      expectedStatus: parsed.expectedStatus || 'success',
+      resultNote: parsed.resultNote
     });
   }
 

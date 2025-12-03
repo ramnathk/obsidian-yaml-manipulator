@@ -1,6 +1,6 @@
 // Auto-generated from docs/examples.md
 // Category: Array Operations
-// Generated: 2025-12-02T23:50:16.306Z
+// Generated: 2025-12-03T21:00:40.148Z
 // DO NOT EDIT MANUALLY - regenerate with: npm run generate:tests
 
 import { describe, test, expect } from 'vitest';
@@ -8,7 +8,7 @@ import { executeTestRule, lenientDeepEqual } from '../../helpers/testRuleExecuto
 
 describe('Array Operations', () => {
 
-  test('Example 16: APPEND to existing array', () => {
+  test('Example 24: APPEND to existing array', () => {
     // Input YAML
     const input = {
   "tags": [
@@ -18,7 +18,7 @@ describe('Array Operations', () => {
 };
 
     // Rule
-    const condition = "(none)";
+    const condition = "";
     const action = "APPEND tags \"urgent\"";
 
     // Execute rule
@@ -40,14 +40,14 @@ describe('Array Operations', () => {
     
   });
 
-  test('Example 17: APPEND creates array if field missing', () => {
+  test('Example 25: APPEND creates array if field missing', () => {
     // Input YAML
     const input = {
   "title": "Note"
 };
 
     // Rule
-    const condition = "(none)";
+    const condition = "";
     const action = "APPEND tags \"new\"";
 
     // Execute rule
@@ -68,15 +68,41 @@ describe('Array Operations', () => {
     
   });
 
-  test('Example 18: APPEND to non-array (error)', () => {
+  test('Example 26: APPEND to non-array (error)', () => {
     // Input YAML
     const input = {
   "status": "draft"
 };
 
     // Rule
-    const condition = "(none)";
+    const condition = "";
     const action = "APPEND status \"test\"";
+
+    // Execute rule
+    const result = executeTestRule({ condition, action }, input);
+
+    // Expected output
+    const expectedOutput = null;
+    const expectedStatus = "error";
+
+    // Assertions
+    expect(result.status).toBe(expectedStatus);
+    // Error case - data unchanged, just verify error occurred
+    
+  });
+
+  test('Example 27: PREPEND to array', () => {
+    // Input YAML
+    const input = {
+  "tags": [
+    "work",
+    "project"
+  ]
+};
+
+    // Rule
+    const condition = "";
+    const action = "PREPEND tags \"urgent\"";
 
     // Execute rule
     const result = executeTestRule({ condition, action }, input);
@@ -89,15 +115,15 @@ describe('Array Operations', () => {
     "project"
   ]
 };
-    const expectedStatus = "error";
+    const expectedStatus = "success";
 
     // Assertions
     expect(result.status).toBe(expectedStatus);
-    // Error case - data unchanged, just verify error occurred
+    expect(lenientDeepEqual(result.newData, expectedOutput)).toBe(true);
     
   });
 
-  test('Example 19: REMOVE matching value', () => {
+  test('Example 28: REMOVE matching value', () => {
     // Input YAML
     const input = {
   "tags": [
@@ -109,7 +135,7 @@ describe('Array Operations', () => {
 };
 
     // Rule
-    const condition = "(none)";
+    const condition = "";
     const action = "REMOVE tags \"urgent\"";
 
     // Execute rule
@@ -131,7 +157,7 @@ describe('Array Operations', () => {
     
   });
 
-  test('Example 20: REMOVE non-existent value (silent)', () => {
+  test('Example 29: REMOVE non-existent value (silent)', () => {
     // Input YAML
     const input = {
   "tags": [
@@ -141,7 +167,7 @@ describe('Array Operations', () => {
 };
 
     // Rule
-    const condition = "(none)";
+    const condition = "";
     const action = "REMOVE tags \"urgent\"";
 
     // Execute rule
@@ -154,7 +180,7 @@ describe('Array Operations', () => {
     "project"
   ]
 };
-    const expectedStatus = "warning";
+    const expectedStatus = "success";
 
     // Assertions
     expect(result.status).toBe(expectedStatus);
@@ -162,7 +188,7 @@ describe('Array Operations', () => {
     
   });
 
-  test('Example 21: REMOVE_AT specific index', () => {
+  test('Example 30: REMOVE_AT specific index', () => {
     // Input YAML
     const input = {
   "tags": [
@@ -173,7 +199,7 @@ describe('Array Operations', () => {
 };
 
     // Rule
-    const condition = "(none)";
+    const condition = "";
     const action = "REMOVE_AT tags 1";
 
     // Execute rule
@@ -194,7 +220,7 @@ describe('Array Operations', () => {
     
   });
 
-  test('Example 22: REMOVE_AT negative index', () => {
+  test('Example 31: REMOVE_AT negative index', () => {
     // Input YAML
     const input = {
   "tags": [
@@ -205,7 +231,7 @@ describe('Array Operations', () => {
 };
 
     // Rule
-    const condition = "(none)";
+    const condition = "";
     const action = "REMOVE_AT tags -1";
 
     // Execute rule
@@ -226,7 +252,7 @@ describe('Array Operations', () => {
     
   });
 
-  test('Example 23: REMOVE_AT out of bounds (error)', () => {
+  test('Example 32: REMOVE_AT out of bounds (error)', () => {
     // Input YAML
     const input = {
   "tags": [
@@ -236,8 +262,34 @@ describe('Array Operations', () => {
 };
 
     // Rule
-    const condition = "(none)";
+    const condition = "";
     const action = "REMOVE_AT tags 5";
+
+    // Execute rule
+    const result = executeTestRule({ condition, action }, input);
+
+    // Expected output
+    const expectedOutput = null;
+    const expectedStatus = "error";
+
+    // Assertions
+    expect(result.status).toBe(expectedStatus);
+    // Error case - data unchanged, just verify error occurred
+    
+  });
+
+  test('Example 33: INSERT_AT middle', () => {
+    // Input YAML
+    const input = {
+  "tags": [
+    "work",
+    "project"
+  ]
+};
+
+    // Rule
+    const condition = "";
+    const action = "INSERT_AT tags \"urgent\" AT 1";
 
     // Execute rule
     const result = executeTestRule({ condition, action }, input);
@@ -250,15 +302,15 @@ describe('Array Operations', () => {
     "project"
   ]
 };
-    const expectedStatus = "error";
+    const expectedStatus = "success";
 
     // Assertions
     expect(result.status).toBe(expectedStatus);
-    // Error case - data unchanged, just verify error occurred
+    expect(lenientDeepEqual(result.newData, expectedOutput)).toBe(true);
     
   });
 
-  test('Example 24: INSERT_AT at end (index = length)', () => {
+  test('Example 34: INSERT_AT at end (index = length)', () => {
     // Input YAML
     const input = {
   "tags": [
@@ -268,7 +320,7 @@ describe('Array Operations', () => {
 };
 
     // Rule
-    const condition = "(none)";
+    const condition = "";
     const action = "INSERT_AT tags \"project\" AT 2";
 
     // Execute rule
@@ -290,7 +342,7 @@ describe('Array Operations', () => {
     
   });
 
-  test('Example 25: DEDUPLICATE array', () => {
+  test('Example 35: DEDUPLICATE array', () => {
     // Input YAML
     const input = {
   "tags": [
@@ -304,7 +356,7 @@ describe('Array Operations', () => {
 };
 
     // Rule
-    const condition = "(none)";
+    const condition = "";
     const action = "DEDUPLICATE tags";
 
     // Execute rule
@@ -326,7 +378,7 @@ describe('Array Operations', () => {
     
   });
 
-  test('Example 26: SORT alphabetically', () => {
+  test('Example 36: SORT alphabetically', () => {
     // Input YAML
     const input = {
   "tags": [
@@ -338,7 +390,7 @@ describe('Array Operations', () => {
 };
 
     // Rule
-    const condition = "(none)";
+    const condition = "";
     const action = "SORT tags";
 
     // Execute rule
@@ -361,7 +413,7 @@ describe('Array Operations', () => {
     
   });
 
-  test('Example 27: SORT numbers', () => {
+  test('Example 37: SORT numbers', () => {
     // Input YAML
     const input = {
   "scores": [
@@ -373,7 +425,7 @@ describe('Array Operations', () => {
 };
 
     // Rule
-    const condition = "(none)";
+    const condition = "";
     const action = "SORT scores";
 
     // Execute rule
@@ -396,7 +448,7 @@ describe('Array Operations', () => {
     
   });
 
-  test('Example 28: SORT_BY object property', () => {
+  test('Example 39: SORT_BY object property', () => {
     // Input YAML
     const input = {
   "countsLog": [
@@ -416,7 +468,7 @@ describe('Array Operations', () => {
 };
 
     // Rule
-    const condition = "(none)";
+    const condition = "";
     const action = "SORT_BY countsLog BY count DESC";
 
     // Execute rule
@@ -447,7 +499,7 @@ describe('Array Operations', () => {
     
   });
 
-  test('Example 29: MOVE by index', () => {
+  test('Example 40: MOVE by index', () => {
     // Input YAML
     const input = {
   "tags": [
@@ -459,7 +511,7 @@ describe('Array Operations', () => {
 };
 
     // Rule
-    const condition = "(none)";
+    const condition = "";
     const action = "MOVE tags FROM 1 TO 3";
 
     // Execute rule
@@ -482,7 +534,7 @@ describe('Array Operations', () => {
     
   });
 
-  test('Example 30: MOVE_WHERE to index', () => {
+  test('Example 41: MOVE_WHERE to index', () => {
     // Input YAML
     const input = {
   "countsLog": [
@@ -506,7 +558,7 @@ describe('Array Operations', () => {
 };
 
     // Rule
-    const condition = "(none)";
+    const condition = "";
     const action = "MOVE_WHERE countsLog WHERE count > 5 TO 0";
 
     // Execute rule
@@ -541,7 +593,7 @@ describe('Array Operations', () => {
     
   });
 
-  test('Example 31: MOVE_WHERE AFTER', () => {
+  test('Example 42: MOVE_WHERE AFTER', () => {
     // Input YAML
     const input = {
   "countsLog": [
@@ -561,7 +613,7 @@ describe('Array Operations', () => {
 };
 
     // Rule
-    const condition = "(none)";
+    const condition = "";
     const action = "MOVE_WHERE countsLog WHERE count > 5 AFTER book=\"The Hobbit\"";
 
     // Execute rule
@@ -592,7 +644,7 @@ describe('Array Operations', () => {
     
   });
 
-  test('Example 32: UPDATE_WHERE single field', () => {
+  test('Example 43: UPDATE_WHERE single field', () => {
     // Input YAML
     const input = {
   "countsLog": [
@@ -610,7 +662,7 @@ describe('Array Operations', () => {
 };
 
     // Rule
-    const condition = "(none)";
+    const condition = "";
     const action = "UPDATE_WHERE countsLog WHERE book=\"BBBK\" SET unit \"Malas\"";
 
     // Execute rule
@@ -639,7 +691,7 @@ describe('Array Operations', () => {
     
   });
 
-  test('Example 33: UPDATE_WHERE multiple fields', () => {
+  test('Example 44: UPDATE_WHERE multiple fields', () => {
     // Input YAML
     const input = {
   "tasks": [
@@ -652,7 +704,7 @@ describe('Array Operations', () => {
 };
 
     // Rule
-    const condition = "(none)";
+    const condition = "";
     const action = "UPDATE_WHERE tasks WHERE title=\"Review PR\" SET status \"done\", priority 5, completedDate \"2025-11-19\"";
 
     // Execute rule
@@ -677,7 +729,7 @@ describe('Array Operations', () => {
     
   });
 
-  test('Example 34: UPDATE_WHERE no matches (silent)', () => {
+  test('Example 45: UPDATE_WHERE no matches (silent)', () => {
     // Input YAML
     const input = {
   "countsLog": [
@@ -689,7 +741,7 @@ describe('Array Operations', () => {
 };
 
     // Rule
-    const condition = "(none)";
+    const condition = "";
     const action = "UPDATE_WHERE countsLog WHERE title=\"Neuromancer\" SET count 216";
 
     // Execute rule

@@ -1,6 +1,6 @@
 // Auto-generated from docs/examples.md
 // Category: Complex Conditions
-// Generated: 2025-12-02T23:50:16.308Z
+// Generated: 2025-12-03T21:00:40.150Z
 // DO NOT EDIT MANUALLY - regenerate with: npm run generate:tests
 
 import { describe, test, expect } from 'vitest';
@@ -8,7 +8,7 @@ import { executeTestRule, lenientDeepEqual } from '../../helpers/testRuleExecuto
 
 describe('Complex Conditions', () => {
 
-  test('Example 39: Simple AND', () => {
+  test('Example 51: Simple AND', () => {
     // Input YAML
     const input = {
   "status": "draft",
@@ -36,7 +36,7 @@ describe('Complex Conditions', () => {
     
   });
 
-  test('Example 40: AND with non-match', () => {
+  test('Example 52: AND with non-match', () => {
     // Input YAML
     const input = {
   "status": "published",
@@ -55,7 +55,7 @@ describe('Complex Conditions', () => {
   "status": "published",
   "priority": 5
 };
-    const expectedStatus = "skipped";
+    const expectedStatus = "success";
 
     // Assertions
     expect(result.status).toBe(expectedStatus);
@@ -63,7 +63,7 @@ describe('Complex Conditions', () => {
     
   });
 
-  test('Example 41: OR conditions', () => {
+  test('Example 53: OR conditions', () => {
     // Input YAML
     const input = {
   "status": "draft"
@@ -89,7 +89,7 @@ describe('Complex Conditions', () => {
     
   });
 
-  test('Example 42: NOT operator', () => {
+  test('Example 54: NOT operator', () => {
     // Input YAML
     const input = {
   "status": "archived"
@@ -114,7 +114,7 @@ describe('Complex Conditions', () => {
     
   });
 
-  test('Example 43: Complex nested conditions', () => {
+  test('Example 56: Complex nested conditions', () => {
     // Input YAML
     const input = {
   "status": "draft",
@@ -152,7 +152,7 @@ describe('Complex Conditions', () => {
     
   });
 
-  test('Example 44: ANY in array', () => {
+  test('Example 57: ANY in array', () => {
     // Input YAML
     const input = {
   "projects": [
@@ -196,7 +196,7 @@ describe('Complex Conditions', () => {
     
   });
 
-  test('Example 45: ALL in array', () => {
+  test('Example 58: ALL in array', () => {
     // Input YAML
     const input = {
   "tasks": [

@@ -1,6 +1,6 @@
 // Auto-generated from docs/examples.md
 // Category: Complex Array-of-Objects Operations
-// Generated: 2025-12-02T23:50:16.313Z
+// Generated: 2025-12-03T21:00:40.156Z
 // DO NOT EDIT MANUALLY - regenerate with: npm run generate:tests
 
 import { describe, test, expect } from 'vitest';
@@ -8,7 +8,7 @@ import { executeTestRule, lenientDeepEqual } from '../../helpers/testRuleExecuto
 
 describe('Complex Array-of-Objects Operations', () => {
 
-  test('Example 79: Add new movie to watchlist', () => {
+  test('Example 106: Add new movie to watchlist', () => {
     // Input YAML
     const input = {
   "title": "My Movie Notes",
@@ -28,7 +28,7 @@ describe('Complex Array-of-Objects Operations', () => {
 };
 
     // Rule
-    const condition = "(none)";
+    const condition = "";
     const action = "APPEND watchlist { \"title\": \"Interstellar\", \"director\": \"Christopher Nolan\", \"year\": 2014, \"rating\": 8.6, \"genres\": [\"sci-fi\", \"drama\"], \"watched\": false }";
 
     // Execute rule
@@ -70,7 +70,7 @@ describe('Complex Array-of-Objects Operations', () => {
     
   });
 
-  test('Example 80: Check if movie already exists before adding', () => {
+  test('Example 107: Check if movie already exists before adding', () => {
     // Input YAML
     const input = {
   "watchlist": [
@@ -107,7 +107,7 @@ describe('Complex Array-of-Objects Operations', () => {
     
   });
 
-  test('Example 81: Mark specific movie as watched', () => {
+  test('Example 108: Mark specific movie as watched', () => {
     // Input YAML
     const input = {
   "watchlist": [
@@ -127,7 +127,7 @@ describe('Complex Array-of-Objects Operations', () => {
 };
 
     // Rule
-    const condition = "(none)";
+    const condition = "";
     const action = "UPDATE_WHERE watchlist WHERE title=\"Inception\" SET watched true, watchedDate \"2025-11-23\", rating 9.0";
 
     // Execute rule
@@ -160,7 +160,7 @@ describe('Complex Array-of-Objects Operations', () => {
     
   });
 
-  test('Example 82: Mark all movies by director as watched', () => {
+  test('Example 109: Mark all movies by director as watched', () => {
     // Input YAML
     const input = {
   "watchlist": [
@@ -183,7 +183,7 @@ describe('Complex Array-of-Objects Operations', () => {
 };
 
     // Rule
-    const condition = "(none)";
+    const condition = "";
     const action = "UPDATE_WHERE watchlist WHERE director=\"Christopher Nolan\" SET watched true, bingeDate \"2025-11-23\"";
 
     // Execute rule
@@ -219,7 +219,7 @@ describe('Complex Array-of-Objects Operations', () => {
     
   });
 
-  test('Example 83: Check if any movie is highly rated', () => {
+  test('Example 110: Check if any movie is highly rated', () => {
     // Input YAML
     const input = {
   "watchlist": [
@@ -263,7 +263,7 @@ describe('Complex Array-of-Objects Operations', () => {
     
   });
 
-  test('Example 84: Check if all movies are watched', () => {
+  test('Example 111: Check if all movies are watched', () => {
     // Input YAML
     const input = {
   "watchlist": [
@@ -306,7 +306,7 @@ describe('Complex Array-of-Objects Operations', () => {
     
   });
 
-  test('Example 85: Complex multi-condition check', () => {
+  test('Example 112: Complex multi-condition check', () => {
     // Input YAML
     const input = {
   "watchlist": [
@@ -362,7 +362,7 @@ describe('Complex Array-of-Objects Operations', () => {
     
   });
 
-  test('Example 86: Sort by rating (highest first)', () => {
+  test('Example 113: Sort by rating (highest first)', () => {
     // Input YAML
     const input = {
   "watchlist": [
@@ -386,7 +386,7 @@ describe('Complex Array-of-Objects Operations', () => {
 };
 
     // Rule
-    const condition = "(none)";
+    const condition = "";
     const action = "SORT_BY watchlist BY rating DESC";
 
     // Execute rule
@@ -421,7 +421,7 @@ describe('Complex Array-of-Objects Operations', () => {
     
   });
 
-  test('Example 87: Sort by year (oldest first)', () => {
+  test('Example 114: Sort by year (oldest first)', () => {
     // Input YAML
     const input = {
   "watchlist": [
@@ -441,7 +441,7 @@ describe('Complex Array-of-Objects Operations', () => {
 };
 
     // Rule
-    const condition = "(none)";
+    const condition = "";
     const action = "SORT_BY watchlist BY year ASC";
 
     // Execute rule
@@ -472,7 +472,7 @@ describe('Complex Array-of-Objects Operations', () => {
     
   });
 
-  test('Example 88: Sort by title alphabetically', () => {
+  test('Example 115: Sort by title alphabetically', () => {
     // Input YAML
     const input = {
   "watchlist": [
@@ -492,7 +492,7 @@ describe('Complex Array-of-Objects Operations', () => {
 };
 
     // Rule
-    const condition = "(none)";
+    const condition = "";
     const action = "SORT_BY watchlist BY title ASC";
 
     // Execute rule
@@ -523,7 +523,7 @@ describe('Complex Array-of-Objects Operations', () => {
     
   });
 
-  test('Example 89: Move unwatched movies to top', () => {
+  test('Example 116: Move unwatched movies to top', () => {
     // Input YAML
     const input = {
   "watchlist": [
@@ -547,7 +547,7 @@ describe('Complex Array-of-Objects Operations', () => {
 };
 
     // Rule
-    const condition = "(none)";
+    const condition = "";
     const action = "MOVE_WHERE watchlist WHERE watched = false TO 0";
 
     // Execute rule
@@ -582,7 +582,7 @@ describe('Complex Array-of-Objects Operations', () => {
     
   });
 
-  test('Example 90: Move high-rated movies to top', () => {
+  test('Example 117: Move high-rated movies to top', () => {
     // Input YAML
     const input = {
   "watchlist": [
@@ -606,7 +606,7 @@ describe('Complex Array-of-Objects Operations', () => {
 };
 
     // Rule
-    const condition = "(none)";
+    const condition = "";
     const action = "MOVE_WHERE watchlist WHERE rating >= 8.5 TO START";
 
     // Execute rule
@@ -641,7 +641,7 @@ describe('Complex Array-of-Objects Operations', () => {
     
   });
 
-  test('Example 91: Move movies AFTER a specific movie', () => {
+  test('Example 118: Move movies AFTER a specific movie', () => {
     // Input YAML
     const input = {
   "watchlist": [
@@ -661,7 +661,7 @@ describe('Complex Array-of-Objects Operations', () => {
 };
 
     // Rule
-    const condition = "(none)";
+    const condition = "";
     const action = "MOVE_WHERE watchlist WHERE priority = \"high\" AFTER title=\"Inception\"";
 
     // Execute rule
@@ -692,7 +692,7 @@ describe('Complex Array-of-Objects Operations', () => {
     
   });
 
-  test('Example 92: Track reading progress', () => {
+  test('Example 119: Track reading progress', () => {
     // Input YAML
     const input = {
   "readingList": [
@@ -714,7 +714,7 @@ describe('Complex Array-of-Objects Operations', () => {
 };
 
     // Rule
-    const condition = "(none)";
+    const condition = "";
     const action = "UPDATE_WHERE readingList WHERE title=\"Dune\" SET currentPage 350, lastRead \"2025-11-23\"";
 
     // Execute rule
@@ -748,7 +748,7 @@ describe('Complex Array-of-Objects Operations', () => {
     
   });
 
-  test('Example 93: Mark book as finished and add rating', () => {
+  test('Example 120: Mark book as finished and add rating', () => {
     // Input YAML
     const input = {
   "readingList": [
@@ -763,7 +763,7 @@ describe('Complex Array-of-Objects Operations', () => {
 };
 
     // Rule
-    const condition = "(none)";
+    const condition = "";
     const action = "UPDATE_WHERE readingList WHERE title=\"1984\" SET status \"finished\", currentPage 328, finishedDate \"2025-11-23\", rating 5";
 
     // Execute rule
@@ -791,12 +791,78 @@ describe('Complex Array-of-Objects Operations', () => {
     
   });
 
-  test('Example 94: Find books with high completion percentage', () => {
+  test('Example 121: Find books with high completion percentage', () => {
     // Input YAML
-    const input = {};
+    const input = {
+  "readingList": [
+    {
+      "title": 1984,
+      "pages": 328,
+      "currentPage": 300
+    },
+    {
+      "title": "Dune",
+      "pages": 688,
+      "currentPage": 100
+    }
+  ]
+};
 
     // Rule
-    const condition = "(none)";
+    const condition = "";
+    const action = "SET hasAlmostFinishedBooks true";
+
+    // Execute rule
+    const result = executeTestRule({ condition, action }, input);
+
+    // Expected output
+    const expectedOutput = {
+  "readingList": [
+    {
+      "title": 1984,
+      "pages": 328,
+      "currentPage": 300
+    },
+    {
+      "title": "Dune",
+      "pages": 688,
+      "currentPage": 100
+    }
+  ],
+  "hasAlmostFinishedBooks": true
+};
+    const expectedStatus = "success";
+
+    // Assertions
+    expect(result.status).toBe(expectedStatus);
+    expect(lenientDeepEqual(result.newData, expectedOutput)).toBe(true);
+    
+  });
+
+  test('Example 122: Sort by reading progress', () => {
+    // Input YAML
+    const input = {
+  "readingList": [
+    {
+      "title": 1984,
+      "pages": 328,
+      "currentPage": 50
+    },
+    {
+      "title": "Dune",
+      "pages": 688,
+      "currentPage": 400
+    },
+    {
+      "title": "Foundation",
+      "pages": 255,
+      "currentPage": 10
+    }
+  ]
+};
+
+    // Rule
+    const condition = "";
     const action = "SORT_BY readingList BY currentPage DESC";
 
     // Execute rule
@@ -830,9 +896,60 @@ describe('Complex Array-of-Objects Operations', () => {
     
   });
 
-  test('Example 95: Process watchlist - sort and prioritize', () => {
+  test('Example 123: Process watchlist - sort and prioritize', () => {
     // Input YAML
-    const input = {};
+    const input = {
+  "watchlist": [
+    {
+      "title": "The Room",
+      "rating": 3.7,
+      "watched": false
+    },
+    {
+      "title": "Inception",
+      "rating": 8.8,
+      "watched": true
+    },
+    {
+      "title": "Interstellar",
+      "rating": 8.6,
+      "watched": false
+    }
+  ]
+};
+
+    // Rule
+    const condition = "";
+    const action = "MOVE_WHERE watchlist WHERE watched = false TO START";
+
+    // Execute rule
+    const result = executeTestRule({ condition, action }, input);
+
+    // Expected output
+    const expectedOutput = null;
+    const expectedStatus = "success";
+
+    // Assertions
+    expect(result.status).toBe(expectedStatus);
+    expect(result.modified).toBe(false);
+    
+  });
+
+  test('Example 124: Add default fields to books missing them', () => {
+    // Input YAML
+    const input = {
+  "readingList": [
+    {
+      "title": 1984,
+      "author": "George Orwell"
+    },
+    {
+      "title": "Dune",
+      "author": "Frank Herbert",
+      "status": "reading"
+    }
+  ]
+};
 
     // Rule
     const condition = "ANY readingList WHERE status !exists";
@@ -865,12 +982,102 @@ describe('Complex Array-of-Objects Operations', () => {
     
   });
 
-  test('Example 96: Update movies with specific genre', () => {
+  test('Example 125: Update movies with specific genre', () => {
     // Input YAML
-    const input = {};
+    const input = {
+  "watchlist": [
+    {
+      "title": "Inception",
+      "genres": [
+        "sci-fi",
+        "thriller"
+      ],
+      "priority": "normal"
+    },
+    {
+      "title": "The Godfather",
+      "genres": [
+        "crime",
+        "drama"
+      ],
+      "priority": "normal"
+    },
+    {
+      "title": "Interstellar",
+      "genres": [
+        "sci-fi",
+        "drama"
+      ],
+      "priority": "normal"
+    }
+  ]
+};
 
     // Rule
-    const condition = "(none)";
+    const condition = "";
+    const action = "UPDATE_WHERE watchlist WHERE genres has \"sci-fi\" SET priority \"high\"";
+
+    // Execute rule
+    const result = executeTestRule({ condition, action }, input);
+
+    // Expected output
+    const expectedOutput = {
+  "watchlist": [
+    {
+      "title": "Inception",
+      "genres": [
+        "sci-fi",
+        "thriller"
+      ],
+      "priority": "high"
+    },
+    {
+      "title": "The Godfather",
+      "genres": [
+        "crime",
+        "drama"
+      ],
+      "priority": "normal"
+    },
+    {
+      "title": "Interstellar",
+      "genres": [
+        "sci-fi",
+        "drama"
+      ],
+      "priority": "high"
+    }
+  ]
+};
+    const expectedStatus = "success";
+
+    // Assertions
+    expect(result.status).toBe(expectedStatus);
+    expect(lenientDeepEqual(result.newData, expectedOutput)).toBe(true);
+    
+  });
+
+  test('Example 126: Find and tag recent movies', () => {
+    // Input YAML
+    const input = {
+  "watchlist": [
+    {
+      "title": "Inception",
+      "year": 2010
+    },
+    {
+      "title": "Dune",
+      "year": 2021
+    },
+    {
+      "title": "Everything Everywhere All at Once",
+      "year": 2022
+    }
+  ]
+};
+
+    // Rule
+    const condition = "";
     const action = "UPDATE_WHERE watchlist WHERE year >= 2020 SET tags [\"recent\", \"modern\"]";
 
     // Execute rule
@@ -909,9 +1116,58 @@ describe('Complex Array-of-Objects Operations', () => {
     
   });
 
-  test('Example 97: Add movie only if not exists, then sort', () => {
+  test('Example 127: Add movie only if not exists, then sort', () => {
     // Input YAML
-    const input = {};
+    const input = {
+  "watchlist": [
+    {
+      "title": "Inception",
+      "rating": 8.8
+    },
+    {
+      "title": "The Matrix",
+      "rating": 8.7
+    }
+  ]
+};
+
+    // Rule
+    const condition = "";
+    const action = "APPEND watchlist { \"title\": \"Interstellar\", \"rating\": 8.6 }";
+
+    // Execute rule
+    const result = executeTestRule({ condition, action }, input);
+
+    // Expected output
+    const expectedOutput = null;
+    const expectedStatus = "success";
+
+    // Assertions
+    expect(result.status).toBe(expectedStatus);
+    expect(result.modified).toBe(false);
+    
+  });
+
+  test('Example 128: Archive old watched movies', () => {
+    // Input YAML
+    const input = {
+  "watchlist": [
+    {
+      "title": "Old Movie",
+      "watched": true,
+      "watchedDate": "2020-01-15"
+    },
+    {
+      "title": "Recent Movie",
+      "watched": true,
+      "watchedDate": "2025-11-20"
+    },
+    {
+      "title": "Unwatched",
+      "watched": false
+    }
+  ]
+};
 
     // Rule
     const condition = "ANY watchlist WHERE watched = true AND watchedDate < \"2025-01-01\"";

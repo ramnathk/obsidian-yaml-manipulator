@@ -1,6 +1,6 @@
 // Auto-generated from docs/examples.md
 // Category: Obsidian-Specific Fields
-// Generated: 2025-12-02T23:50:16.311Z
+// Generated: 2025-12-03T21:00:40.154Z
 // DO NOT EDIT MANUALLY - regenerate with: npm run generate:tests
 
 import { describe, test, expect } from 'vitest';
@@ -8,7 +8,7 @@ import { executeTestRule, lenientDeepEqual } from '../../helpers/testRuleExecuto
 
 describe('Obsidian-Specific Fields', () => {
 
-  test('Example 50: Add tag', () => {
+  test('Example 74: Add tag', () => {
     // Input YAML
     const input = {
   "tags": [
@@ -18,7 +18,7 @@ describe('Obsidian-Specific Fields', () => {
 };
 
     // Rule
-    const condition = "(none)";
+    const condition = "";
     const action = "APPEND tags \"urgent\"";
 
     // Execute rule
@@ -40,14 +40,14 @@ describe('Obsidian-Specific Fields', () => {
     
   });
 
-  test('Example 51: Set aliases', () => {
+  test('Example 75: Set aliases', () => {
     // Input YAML
     const input = {
   "title": "Project Overview"
 };
 
     // Rule
-    const condition = "(none)";
+    const condition = "";
     const action = "SET aliases [\"Overview\", \"Project Summary\"]";
 
     // Execute rule
@@ -69,7 +69,7 @@ describe('Obsidian-Specific Fields', () => {
     
   });
 
-  test('Example 52: Dataview custom fields', () => {
+  test('Example 77: Dataview custom fields', () => {
     // Input YAML
     const input = {
   "project": "Website Redesign"

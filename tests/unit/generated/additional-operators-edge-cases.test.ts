@@ -1,6 +1,6 @@
 // Auto-generated from docs/examples.md
 // Category: Additional Operators & Edge Cases
-// Generated: 2025-12-02T23:50:16.312Z
+// Generated: 2025-12-03T21:00:40.155Z
 // DO NOT EDIT MANUALLY - regenerate with: npm run generate:tests
 
 import { describe, test, expect } from 'vitest';
@@ -8,7 +8,7 @@ import { executeTestRule, lenientDeepEqual } from '../../helpers/testRuleExecuto
 
 describe('Additional Operators & Edge Cases', () => {
 
-  test('Example 53: :string check', () => {
+  test('Example 78: :string check', () => {
     // Input YAML
     const input = {
   "title": "My Note",
@@ -38,7 +38,7 @@ describe('Additional Operators & Edge Cases', () => {
     
   });
 
-  test('Example 54: :number check', () => {
+  test('Example 79: :number check', () => {
     // Input YAML
     const input = {
   "priority": 5,
@@ -66,7 +66,7 @@ describe('Additional Operators & Edge Cases', () => {
     
   });
 
-  test('Example 55: :boolean check', () => {
+  test('Example 80: :boolean check', () => {
     // Input YAML
     const input = {
   "published": true,
@@ -96,7 +96,7 @@ describe('Additional Operators & Edge Cases', () => {
     
   });
 
-  test('Example 56: :object check', () => {
+  test('Example 81: :object check', () => {
     // Input YAML
     const input = {
   "metadata": {
@@ -136,7 +136,7 @@ describe('Additional Operators & Edge Cases', () => {
     
   });
 
-  test('Example 57: >= (greater than or equal)', () => {
+  test('Example 82: >= (greater than or equal)', () => {
     // Input YAML
     const input = {
   "priority": 5,
@@ -164,7 +164,7 @@ describe('Additional Operators & Edge Cases', () => {
     
   });
 
-  test('Example 58: <= (less than or equal)', () => {
+  test('Example 83: <= (less than or equal)', () => {
     // Input YAML
     const input = {
   "progress": 100,
@@ -192,7 +192,7 @@ describe('Additional Operators & Edge Cases', () => {
     
   });
 
-  test('Example 59: !has (array doesn\'t have)', () => {
+  test('Example 84: !has (array doesn\'t have)', () => {
     // Input YAML
     const input = {
   "tags": [
@@ -224,7 +224,7 @@ describe('Additional Operators & Edge Cases', () => {
     
   });
 
-  test('Example 60: !:null (not null)', () => {
+  test('Example 85: !:null (not null)', () => {
     // Input YAML
     const input = {
   "status": "active",
@@ -254,7 +254,7 @@ describe('Additional Operators & Edge Cases', () => {
     
   });
 
-  test('Example 61: ALL with match', () => {
+  test('Example 86: ALL with match', () => {
     // Input YAML
     const input = {
   "tasks": [
@@ -298,7 +298,7 @@ describe('Additional Operators & Edge Cases', () => {
     
   });
 
-  test('Example 62: ALL with no match (one fails)', () => {
+  test('Example 87: ALL with no match (one fails)', () => {
     // Input YAML
     const input = {
   "tasks": [
@@ -333,7 +333,7 @@ describe('Additional Operators & Edge Cases', () => {
     }
   ]
 };
-    const expectedStatus = "skipped";
+    const expectedStatus = "success";
 
     // Assertions
     expect(result.status).toBe(expectedStatus);
@@ -341,7 +341,7 @@ describe('Additional Operators & Edge Cases', () => {
     
   });
 
-  test('Example 63: ALL with empty array', () => {
+  test('Example 88: ALL with empty array', () => {
     // Input YAML
     const input = {
   "tasks": []
@@ -358,7 +358,7 @@ describe('Additional Operators & Edge Cases', () => {
     const expectedOutput = {
   "tasks": []
 };
-    const expectedStatus = "skipped";
+    const expectedStatus = "success";
 
     // Assertions
     expect(result.status).toBe(expectedStatus);
@@ -366,7 +366,7 @@ describe('Additional Operators & Edge Cases', () => {
     
   });
 
-  test('Example 64: INSERT (alternative to INSERT_AT)', () => {
+  test('Example 89: INSERT (alternative to INSERT_AT)', () => {
     // Input YAML
     const input = {
   "tags": [
@@ -376,7 +376,7 @@ describe('Additional Operators & Edge Cases', () => {
 };
 
     // Rule
-    const condition = "(none)";
+    const condition = "";
     const action = "INSERT_AT tags \"urgent\" AT 0";
 
     // Execute rule
@@ -398,7 +398,7 @@ describe('Additional Operators & Edge Cases', () => {
     
   });
 
-  test('Example 65: INSERT_AFTER', () => {
+  test('Example 90: INSERT_AFTER', () => {
     // Input YAML
     const input = {
   "tags": [
@@ -409,7 +409,7 @@ describe('Additional Operators & Edge Cases', () => {
 };
 
     // Rule
-    const condition = "(none)";
+    const condition = "";
     const action = "INSERT_AFTER tags \"approve\" AFTER \"review\"";
 
     // Execute rule
@@ -432,7 +432,7 @@ describe('Additional Operators & Edge Cases', () => {
     
   });
 
-  test('Example 66: INSERT_AFTER when target not found (error)', () => {
+  test('Example 91: INSERT_AFTER when target not found (error)', () => {
     // Input YAML
     const input = {
   "tags": [
@@ -442,8 +442,34 @@ describe('Additional Operators & Edge Cases', () => {
 };
 
     // Rule
-    const condition = "(none)";
+    const condition = "";
     const action = "INSERT_AFTER tags \"followup\" AFTER \"urgent\"";
+
+    // Execute rule
+    const result = executeTestRule({ condition, action }, input);
+
+    // Expected output
+    const expectedOutput = null;
+    const expectedStatus = "error";
+
+    // Assertions
+    expect(result.status).toBe(expectedStatus);
+    // Error case - data unchanged, just verify error occurred
+    
+  });
+
+  test('Example 92: INSERT_BEFORE', () => {
+    // Input YAML
+    const input = {
+  "tags": [
+    "review",
+    "publish"
+  ]
+};
+
+    // Rule
+    const condition = "";
+    const action = "INSERT_BEFORE tags \"draft\" BEFORE \"review\"";
 
     // Execute rule
     const result = executeTestRule({ condition, action }, input);
@@ -456,20 +482,63 @@ describe('Additional Operators & Edge Cases', () => {
     "publish"
   ]
 };
-    const expectedStatus = "error";
+    const expectedStatus = "success";
 
     // Assertions
     expect(result.status).toBe(expectedStatus);
-    // Error case - data unchanged, just verify error occurred
+    expect(lenientDeepEqual(result.newData, expectedOutput)).toBe(true);
     
   });
 
-  test('Example 67: REMOVE_ALL (vs REMOVE)', () => {
+  test('Example 93: REMOVE_ALL (vs REMOVE)', () => {
     // Input YAML
-    const input = {};
+    const input = {
+  "tags": [
+    "work",
+    "urgent",
+    "work",
+    "project",
+    "work"
+  ]
+};
 
     // Rule
-    const condition = "(none)";
+    const condition = "";
+    const action = "REMOVE tags \"work\"";
+
+    // Execute rule
+    const result = executeTestRule({ condition, action }, input);
+
+    // Expected output
+    const expectedOutput = {
+  "tags": [
+    "urgent",
+    "work",
+    "project",
+    "work"
+  ]
+};
+    const expectedStatus = "success";
+
+    // Assertions
+    expect(result.status).toBe(expectedStatus);
+    expect(lenientDeepEqual(result.newData, expectedOutput)).toBe(true);
+    
+  });
+
+  test('Example 94: REPLACE (first occurrence)', () => {
+    // Input YAML
+    const input = {
+  "tags": [
+    "draft",
+    "old-tag",
+    "draft",
+    "old-tag"
+  ]
+};
+
+    // Rule
+    const condition = "";
     const action = "REPLACE tags \"old-tag\" WITH \"new-tag\"";
 
     // Execute rule
@@ -492,7 +561,7 @@ describe('Additional Operators & Edge Cases', () => {
     
   });
 
-  test('Example 68: REPLACE_ALL (all occurrences)', () => {
+  test('Example 95: REPLACE_ALL (all occurrences)', () => {
     // Input YAML
     const input = {
   "tags": [
@@ -504,7 +573,7 @@ describe('Additional Operators & Edge Cases', () => {
 };
 
     // Rule
-    const condition = "(none)";
+    const condition = "";
     const action = "REPLACE_ALL tags \"old-tag\" WITH \"new-tag\"";
 
     // Execute rule
@@ -527,7 +596,7 @@ describe('Additional Operators & Edge Cases', () => {
     
   });
 
-  test('Example 69: RENAME top-level field', () => {
+  test('Example 96: RENAME top-level field', () => {
     // Input YAML
     const input = {
   "oldName": "value",
@@ -535,7 +604,7 @@ describe('Additional Operators & Edge Cases', () => {
 };
 
     // Rule
-    const condition = "(none)";
+    const condition = "";
     const action = "RENAME oldName newName";
 
     // Execute rule
@@ -554,7 +623,7 @@ describe('Additional Operators & Edge Cases', () => {
     
   });
 
-  test('Example 70: RENAME nested field', () => {
+  test('Example 97: RENAME nested field', () => {
     // Input YAML
     const input = {
   "metadata": {
@@ -564,7 +633,7 @@ describe('Additional Operators & Edge Cases', () => {
 };
 
     // Rule
-    const condition = "(none)";
+    const condition = "";
     const action = "RENAME metadata.oldField metadata.newField";
 
     // Execute rule
@@ -585,14 +654,14 @@ describe('Additional Operators & Edge Cases', () => {
     
   });
 
-  test('Example 71: RENAME when source doesn\'t exist (silent)', () => {
+  test('Example 98: RENAME when source doesn\'t exist (silent)', () => {
     // Input YAML
     const input = {
   "status": "active"
 };
 
     // Rule
-    const condition = "(none)";
+    const condition = "";
     const action = "RENAME nonExistent newName";
 
     // Execute rule
@@ -602,7 +671,7 @@ describe('Additional Operators & Edge Cases', () => {
     const expectedOutput = {
   "status": "active"
 };
-    const expectedStatus = "skipped";
+    const expectedStatus = "success";
 
     // Assertions
     expect(result.status).toBe(expectedStatus);
@@ -610,7 +679,7 @@ describe('Additional Operators & Edge Cases', () => {
     
   });
 
-  test('Example 72: RENAME when target exists (overwrite)', () => {
+  test('Example 99: RENAME when target exists (overwrite)', () => {
     // Input YAML
     const input = {
   "oldName": "old value",
@@ -618,7 +687,7 @@ describe('Additional Operators & Edge Cases', () => {
 };
 
     // Rule
-    const condition = "(none)";
+    const condition = "";
     const action = "RENAME oldName newName";
 
     // Execute rule
@@ -636,7 +705,7 @@ describe('Additional Operators & Edge Cases', () => {
     
   });
 
-  test('Example 73: String length', () => {
+  test('Example 100: String length', () => {
     // Input YAML
     const input = {
   "title": "This is a very long title",
@@ -664,7 +733,7 @@ describe('Additional Operators & Edge Cases', () => {
     
   });
 
-  test('Example 74: Object keys length', () => {
+  test('Example 101: Object keys length', () => {
     // Input YAML
     const input = {
   "metadata": {
@@ -700,7 +769,7 @@ describe('Additional Operators & Edge Cases', () => {
     
   });
 
-  test('Example 75: Exact length match', () => {
+  test('Example 102: Exact length match', () => {
     // Input YAML
     const input = {
   "tags": [
@@ -734,7 +803,7 @@ describe('Additional Operators & Edge Cases', () => {
     
   });
 
-  test('Example 76: Multiple type checks', () => {
+  test('Example 103: Multiple type checks', () => {
     // Input YAML
     const input = {
   "title": "My Note",
@@ -764,7 +833,7 @@ describe('Additional Operators & Edge Cases', () => {
     
   });
 
-  test('Example 77: Range check (between values)', () => {
+  test('Example 104: Range check (between values)', () => {
     // Input YAML
     const input = {
   "priority": 7
@@ -790,7 +859,7 @@ describe('Additional Operators & Edge Cases', () => {
     
   });
 
-  test('Example 78: Complex ANY/ALL combination', () => {
+  test('Example 105: Complex ANY/ALL combination', () => {
     // Input YAML
     const input = {
   "projects": [

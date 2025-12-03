@@ -1,6 +1,6 @@
 // Auto-generated from docs/examples.md
 // Category: Edge Cases
-// Generated: 2025-12-02T23:50:16.311Z
+// Generated: 2025-12-03T21:00:40.151Z
 // DO NOT EDIT MANUALLY - regenerate with: npm run generate:tests
 
 import { describe, test, expect } from 'vitest';
@@ -8,12 +8,14 @@ import { executeTestRule, lenientDeepEqual } from '../../helpers/testRuleExecuto
 
 describe('Edge Cases', () => {
 
-  test('Example 48: Empty frontmatter block', () => {
+  test('Example 67: Empty frontmatter block', () => {
     // Input YAML
-    const input = {};
+    const input = {
+  "Action": "SET status \"draft\""
+};
 
     // Rule
-    const condition = "(none)";
+    const condition = "";
     const action = "SET status \"draft\"";
 
     // Execute rule
@@ -31,21 +33,19 @@ describe('Edge Cases', () => {
     
   });
 
-  test('Example 49: Invalid YAML (parse error)', () => {
+  test('Example 68: Invalid YAML (parse error)', () => {
     // Input YAML
     const input = {};
 
     // Rule
-    const condition = "(none)";
+    const condition = "";
     const action = "SET reviewed true";
 
     // Execute rule
     const result = executeTestRule({ condition, action }, input);
 
     // Expected output
-    const expectedOutput = {
-  "relatedNote": "[[Project Overview]]"
-};
+    const expectedOutput = null;
     const expectedStatus = "error";
 
     // Assertions

@@ -1,6 +1,6 @@
 // Auto-generated from docs/examples.md
 // Category: Basic Operations
-// Generated: 2025-12-02T23:50:16.303Z
+// Generated: 2025-12-03T21:00:40.143Z
 // DO NOT EDIT MANUALLY - regenerate with: npm run generate:tests
 
 import { describe, test, expect } from 'vitest';
@@ -15,7 +15,7 @@ describe('Basic Operations', () => {
 };
 
     // Rule
-    const condition = "(none)";
+    const condition = "";
     const action = "SET status \"published\"";
 
     // Execute rule
@@ -41,7 +41,7 @@ describe('Basic Operations', () => {
 };
 
     // Rule
-    const condition = "(none)";
+    const condition = "";
     const action = "SET status \"published\"";
 
     // Execute rule
@@ -68,7 +68,7 @@ describe('Basic Operations', () => {
 };
 
     // Rule
-    const condition = "(none)";
+    const condition = "";
     const action = "SET metadata.version \"1.0\"";
 
     // Execute rule
@@ -96,7 +96,7 @@ describe('Basic Operations', () => {
 };
 
     // Rule
-    const condition = "(none)";
+    const condition = "";
     const action = "SET metadata.version \"1.0\"";
 
     // Execute rule
@@ -124,7 +124,7 @@ describe('Basic Operations', () => {
 };
 
     // Rule
-    const condition = "(none)";
+    const condition = "";
     const action = "ADD status \"draft\"";
 
     // Execute rule
@@ -151,7 +151,7 @@ describe('Basic Operations', () => {
 };
 
     // Rule
-    const condition = "(none)";
+    const condition = "";
     const action = "ADD status \"draft\"";
 
     // Execute rule
@@ -167,7 +167,7 @@ describe('Basic Operations', () => {
     // Assertions
     expect(result.status).toBe(expectedStatus);
     expect(lenientDeepEqual(result.newData, expectedOutput)).toBe(true);
-    
+    expect(result.warning).toContain("Field 'status' already exists");
   });
 
   test('Example 7: DELETE existing field', () => {
@@ -179,7 +179,7 @@ describe('Basic Operations', () => {
 };
 
     // Rule
-    const condition = "(none)";
+    const condition = "";
     const action = "DELETE draft";
 
     // Execute rule
@@ -205,7 +205,7 @@ describe('Basic Operations', () => {
 };
 
     // Rule
-    const condition = "(none)";
+    const condition = "";
     const action = "DELETE status";
 
     // Execute rule
@@ -215,7 +215,7 @@ describe('Basic Operations', () => {
     const expectedOutput = {
   "title": "My Note"
 };
-    const expectedStatus = "skipped";
+    const expectedStatus = "success";
 
     // Assertions
     expect(result.status).toBe(expectedStatus);
@@ -233,7 +233,7 @@ describe('Basic Operations', () => {
 };
 
     // Rule
-    const condition = "(none)";
+    const condition = "";
     const action = "DELETE metadata.version";
 
     // Execute rule

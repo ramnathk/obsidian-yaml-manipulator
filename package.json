@@ -12,7 +12,7 @@
 		"docs:build": "vitepress build docs-site",
 		"docs:preview": "vitepress preview docs-site",
 		"version": "node version-bump.mjs && git add manifest.json versions.json",
-		"test": "vitest run",
+		"test": "vitest run --pool=forks --poolOptions.forks.singleFork=true",
 		"test:watch": "vitest",
 		"test:ui": "vitest --ui",
 		"test:coverage": "vitest --coverage",
