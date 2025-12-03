@@ -1,7 +1,7 @@
 # Changelog
 
 ## [1.1.2] - 2025-12-03
-**12** commits in this release
+**14** commits in this release
 
 
 
@@ -27,6 +27,8 @@
 
 ### 📝 Other Changes
 
+- Add comprehensive verification command (af20e4b)
+- ramnathk ()
 -  1 skipped (937) (- Total)
 - Karthikeyan R ()
 - Karthikeyan R ()
