@@ -63,9 +63,10 @@ function evaluateComparison(node: ComparisonNode, data: any): boolean {
 
 	switch (node.operator) {
 		case '=':
-			return leftValue === rightValue;
+			// Use loose equality to handle common type coercions (e.g., "1984" == 1984)
+			return leftValue == rightValue;
 		case '!=':
-			return leftValue !== rightValue;
+			return leftValue != rightValue;
 		case '>':
 			return typeof leftValue === 'number' && typeof rightValue === 'number' && leftValue > rightValue;
 		case '<':

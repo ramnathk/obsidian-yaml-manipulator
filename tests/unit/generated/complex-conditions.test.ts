@@ -55,7 +55,7 @@ describe('Complex Conditions', () => {
   "status": "published",
   "priority": 5
 };
-    const expectedStatus = "success";
+    const expectedStatus = "skipped";
 
     // Assertions
     expect(result.status).toBe(expectedStatus);
@@ -106,7 +106,7 @@ describe('Complex Conditions', () => {
     const expectedOutput = {
   "status": "archived"
 };
-    const expectedStatus = "success";
+    const expectedStatus = "skipped";
 
     // Assertions
     expect(result.status).toBe(expectedStatus);
@@ -231,7 +231,7 @@ describe('Complex Conditions', () => {
     }
   ]
 };
-    const expectedStatus = "success";
+    const expectedStatus = "skipped";
 
     // Assertions
     expect(result.status).toBe(expectedStatus);

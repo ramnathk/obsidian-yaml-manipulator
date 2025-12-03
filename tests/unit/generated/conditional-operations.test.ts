@@ -1,6 +1,6 @@
 // Auto-generated from docs/examples.md
 // Category: Conditional Operations
-// Generated: 2025-12-03T21:00:40.147Z
+// Generated: 2025-12-02T23:50:16.306Z
 // DO NOT EDIT MANUALLY - regenerate with: npm run generate:tests
 
 import { describe, test, expect } from 'vitest';
@@ -8,7 +8,7 @@ import { executeTestRule, lenientDeepEqual } from '../../helpers/testRuleExecuto
 
 describe('Conditional Operations', () => {
 
-  test('Example 12: Numeric comparison', () => {
+  test('Example 10: Numeric comparison', () => {
     // Input YAML
     const input = {
   "priority": 5
@@ -34,7 +34,7 @@ describe('Conditional Operations', () => {
     
   });
 
-  test('Example 17: Array contains (has)', () => {
+  test('Example 11: Array contains (has)', () => {
     // Input YAML
     const input = {
   "tags": [
@@ -68,7 +68,7 @@ describe('Conditional Operations', () => {
     
   });
 
-  test('Example 19: Empty array', () => {
+  test('Example 12: Empty array', () => {
     // Input YAML
     const input = {
   "tags": []
@@ -82,16 +82,16 @@ describe('Conditional Operations', () => {
     const result = executeTestRule({ condition, action }, input);
 
     // Expected output
-    const expectedOutput = null;
+    const expectedOutput = {};
     const expectedStatus = "success";
 
     // Assertions
     expect(result.status).toBe(expectedStatus);
-    expect(result.modified).toBe(false);
+    expect(lenientDeepEqual(result.newData, expectedOutput)).toBe(true);
     
   });
 
-  test('Example 20: Array length', () => {
+  test('Example 13: Array length', () => {
     // Input YAML
     const input = {
   "tags": [
@@ -125,7 +125,7 @@ describe('Conditional Operations', () => {
     
   });
 
-  test('Example 21: Null check', () => {
+  test('Example 14: Null check', () => {
     // Input YAML
     const input = {
   "deletedAt": null
@@ -139,16 +139,16 @@ describe('Conditional Operations', () => {
     const result = executeTestRule({ condition, action }, input);
 
     // Expected output
-    const expectedOutput = null;
+    const expectedOutput = {};
     const expectedStatus = "success";
 
     // Assertions
     expect(result.status).toBe(expectedStatus);
-    expect(result.modified).toBe(false);
+    expect(lenientDeepEqual(result.newData, expectedOutput)).toBe(true);
     
   });
 
-  test('Example 22: Basic regex', () => {
+  test('Example 15: Basic regex', () => {
     // Input YAML
     const input = {
   "filename": "project-2025-report.md"

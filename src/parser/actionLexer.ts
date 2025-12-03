@@ -128,10 +128,23 @@ class ActionLexer {
 				continue;
 			}
 
+			// Handle [ - could be array indexing or array literal
 			if (char === '[') {
-				this.tokens.push({ type: ActionTokenType.LBRACKET, value: '[', position: this.position });
-				this.position++;
-				continue;
+				const nextChar = this.peek();
+				// If next char is a digit, it's array indexing (e.g., field[0])
+				// Otherwise, it's an array literal (e.g., ["value1", "value2"])
+				const isArrayIndexing = nextChar !== null && this.isDigit(nextChar);
+
+				if (isArrayIndexing) {
+					// Array indexing: create LBRACKET token
+					this.tokens.push({ type: ActionTokenType.LBRACKET, value: '[', position: this.position });
+					this.position++;
+					continue;
+				} else {
+					// Array literal: tokenize entire array
+					this.tokenizeArray();
+					continue;
+				}
 			}
 
 			if (char === ']') {
@@ -198,7 +211,7 @@ class ActionLexer {
 				continue;
 			}
 
-			// JSON objects/arrays
+			// JSON objects
 			if (char === '{') {
 				this.tokenizeObject();
 				continue;
@@ -354,6 +367,46 @@ class ActionLexer {
 			});
 		} catch (e) {
 			throw new ActionLexerError(`Invalid JSON object: ${jsonStr}`, start);
+		}
+	}
+
+	private tokenizeArray(): void {
+		const start = this.position;
+		let bracketCount = 0;
+		let jsonStr = '';
+
+		// Collect the entire JSON array string
+		while (this.position < this.input.length) {
+			const char = this.input[this.position];
+			jsonStr += char;
+
+			if (char === '[') bracketCount++;
+			if (char === ']') bracketCount--;
+
+			this.position++;
+
+			if (bracketCount === 0) {
+				break;
+			}
+		}
+
+		if (bracketCount !== 0) {
+			throw new ActionLexerError('Unclosed JSON array', start);
+		}
+
+		try {
+			const value = JSON.parse(jsonStr);
+			if (!Array.isArray(value)) {
+				throw new Error('Not an array');
+			}
+			this.tokens.push({
+				type: ActionTokenType.ARRAY,
+				value: value,
+				position: start,
+				raw: jsonStr
+			});
+		} catch (e) {
+			throw new ActionLexerError(`Invalid JSON array: ${jsonStr}`, start);
 		}
 	}
 

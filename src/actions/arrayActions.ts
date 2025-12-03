@@ -692,9 +692,26 @@ export function executeMoveWhere(
 			};
 		}
 
-		// Find items matching condition
+		// For relative positioning, find reference first (before removing items)
+		let refIndex = -1;
+		if (typeof target === 'object' && 'reference' in target) {
+			refIndex = array.findIndex(item => evaluateCondition(target.reference, item));
+			if (refIndex === -1) {
+				return {
+					success: false,
+					modified: false,
+					changes: [],
+					error: 'Target condition matched no items',
+				};
+			}
+		}
+
+		// Find items matching condition (excluding reference if it matches)
 		const matchingIndices: number[] = [];
 		for (let i = 0; i < array.length; i++) {
+			// Skip the reference item itself
+			if (i === refIndex) continue;
+
 			if (evaluateCondition(condition, array[i])) {
 				matchingIndices.push(i);
 			}
@@ -712,6 +729,12 @@ export function executeMoveWhere(
 		// Extract matching items (in reverse order to preserve indices)
 		const matchingItems = matchingIndices.reverse().map(i => array.splice(i, 1)[0]).reverse();
 
+		// Adjust refIndex after removals (items before it were removed)
+		if (refIndex !== -1) {
+			const removedBefore = matchingIndices.filter(idx => idx < refIndex).length;
+			refIndex -= removedBefore;
+		}
+
 		// Determine target position
 		if (target === 'START') {
 			array.unshift(...matchingItems);
@@ -719,18 +742,6 @@ export function executeMoveWhere(
 			array.push(...matchingItems);
 		} else {
 			// Relative positioning (AFTER/BEFORE)
-			const refIndex = array.findIndex(item => evaluateCondition(target.reference, item));
-			if (refIndex === -1) {
-				// Restore items if target not found
-				array.push(...matchingItems);
-				return {
-					success: false,
-					modified: false,
-					changes: [],
-					error: 'Target condition matched no items',
-				};
-			}
-
 			const insertIndex = target.position === 'AFTER' ? refIndex + 1 : refIndex;
 			array.splice(insertIndex, 0, ...matchingItems);
 		}

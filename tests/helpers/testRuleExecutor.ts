@@ -171,8 +171,33 @@ export function executeTestRule(rule: TestRule, inputData: any): TestRuleResult 
  */
 function executeActionForTest(ast: ActionAST, data: any): import('../../src/types').ActionResult {
 	switch (ast.op) {
-		case 'SET':
+		case 'SET': {
+			// Handle multi-field SET
+			if (ast.fields && ast.fields.length > 1) {
+				const changes: string[] = [];
+				let allSuccess = true;
+
+				for (const field of ast.fields) {
+					const result = executeSet(data, field.path, field.value);
+					if (result.success) {
+						changes.push(...result.changes);
+					} else {
+						allSuccess = false;
+						if (result.error) {
+							return result; // Return first error
+						}
+					}
+				}
+
+				return {
+					success: allSuccess,
+					modified: allSuccess && changes.length > 0,
+					changes,
+				};
+			}
+			// Single field SET
 			return executeSet(data, ast.path, ast.value);
+		}
 		case 'ADD':
 			return executeAdd(data, ast.path, ast.value);
 		case 'DELETE':

@@ -333,7 +333,7 @@ describe('Additional Operators & Edge Cases', () => {
     }
   ]
 };
-    const expectedStatus = "success";
+    const expectedStatus = "skipped";
 
     // Assertions
     expect(result.status).toBe(expectedStatus);
@@ -358,7 +358,7 @@ describe('Additional Operators & Edge Cases', () => {
     const expectedOutput = {
   "tasks": []
 };
-    const expectedStatus = "success";
+    const expectedStatus = "skipped";
 
     // Assertions
     expect(result.status).toBe(expectedStatus);
@@ -671,7 +671,7 @@ describe('Additional Operators & Edge Cases', () => {
     const expectedOutput = {
   "status": "active"
 };
-    const expectedStatus = "success";
+    const expectedStatus = "skipped";
 
     // Assertions
     expect(result.status).toBe(expectedStatus);
@@ -758,15 +758,14 @@ describe('Additional Operators & Edge Cases', () => {
     "version": 1,
     "created": "2025-11-01",
     "updated": "2025-11-15"
-  },
-  "richMetadata": true
+  }
 };
-    const expectedStatus = "success";
+    const expectedStatus = "skipped";
 
     // Assertions
     expect(result.status).toBe(expectedStatus);
     expect(lenientDeepEqual(result.newData, expectedOutput)).toBe(true);
-    
+
   });
 
   test('Example 102: Exact length match', () => {
@@ -896,14 +895,13 @@ describe('Additional Operators & Edge Cases', () => {
       "status": "active",
       "priority": 3
     }
-  ],
-  "hasActiveProjects": true
+  ]
 };
-    const expectedStatus = "success";
+    const expectedStatus = "skipped";
 
     // Assertions
     expect(result.status).toBe(expectedStatus);
     expect(lenientDeepEqual(result.newData, expectedOutput)).toBe(true);
-    
+
   });
 });

@@ -36,7 +36,7 @@
 			"npm run build"
 		],
 		"src/**/*.ts": [
-			"npm test"
+			"bash -c 'npm test'"
 		]
 	},
 	"dependencies": {

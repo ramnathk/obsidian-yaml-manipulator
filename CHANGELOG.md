@@ -1,12 +1,13 @@
 # Changelog
 
-## [1.1.1] - 2025-12-03
-**32** commits in this release
+## [1.1.2] - 2025-12-03
+**34** commits in this release
 
 
 
 ### 🐛 Bug Fixes
 
+- Resolve all test failures and implement missing features (e6c65af)
 - Escape Vue template syntax in test-suite.md (2cfd51a)
 - Add missing @sveltejs/vite-plugin-svelte dependency (8411a9a)
 - Exclude WDIO and generated tests from Vitest (017f7e3)
@@ -14,6 +15,7 @@
 
 ### 📝 Other Changes
 
+- Karthikeyan R ()
 - ramnathk ()
 - Migrate documentation to VitePress and fix test execution (50cc828)
 - ramnathk ()

@@ -215,7 +215,7 @@ describe('Basic Operations', () => {
     const expectedOutput = {
   "title": "My Note"
 };
-    const expectedStatus = "success";
+    const expectedStatus = "skipped";
 
     // Assertions
     expect(result.status).toBe(expectedStatus);

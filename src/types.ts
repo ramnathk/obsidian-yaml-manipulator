@@ -237,6 +237,8 @@ export interface SetAction {
 	op: 'SET';
 	path: string;
 	value: any;
+	// Optional: for multi-field SET commands like "SET field1 val1, field2 val2"
+	fields?: Array<{ path: string; value: any }>;
 }
 
 export interface AddAction {

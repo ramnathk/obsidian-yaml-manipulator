@@ -115,13 +115,31 @@ class ActionParser {
 	}
 
 	/**
-	 * SET path value
+	 * SET path value [, path2 value2, ...]
+	 * Supports multiple field assignments in one SET command
 	 */
 	private parseSet(): SetAction {
 		this.advance(); // consume SET
 		const path = this.parsePath();
 		const value = this.parseValue();
-		return { op: 'SET', path, value };
+
+		// Check for additional field-value pairs
+		const fields: Array<{ path: string; value: any }> = [{ path, value }];
+
+		while (this.current().type === ActionTokenType.COMMA) {
+			this.advance(); // consume COMMA
+			const additionalPath = this.parsePath();
+			const additionalValue = this.parseValue();
+			fields.push({ path: additionalPath, value: additionalValue });
+		}
+
+		// If only one field, return simple structure for backwards compatibility
+		if (fields.length === 1) {
+			return { op: 'SET', path, value };
+		}
+
+		// Multiple fields: return with fields array
+		return { op: 'SET', path: fields[0].path, value: fields[0].value, fields };
 	}
 
 	/**

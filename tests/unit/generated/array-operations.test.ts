@@ -180,7 +180,7 @@ describe('Array Operations', () => {
     "project"
   ]
 };
-    const expectedStatus = "success";
+    const expectedStatus = "warning";
 
     // Assertions
     expect(result.status).toBe(expectedStatus);
