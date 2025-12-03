@@ -1,17 +1,19 @@
 # Changelog
 
 ## [1.1.1] - 2025-12-03
-**26** commits in this release
+**28** commits in this release
 
 
 
 ### 🐛 Bug Fixes
 
+- Add missing @sveltejs/vite-plugin-svelte dependency (8411a9a)
 - Exclude WDIO and generated tests from Vitest (017f7e3)
 - Exclude WDIO E2E tests from Vitest (d69b3f1)
 
 ### 📝 Other Changes
 
+- Karthikeyan R ()
 - Clean up outdated files and update .gitignore (9272599)
 - Karthikeyan R ()
 - ramnathk ()
