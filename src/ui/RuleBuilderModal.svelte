@@ -12,6 +12,13 @@
 	export let plugin;
 	export let onClose;
 
+	// Debug helper - only log if debug mode is enabled
+	$: debugLog = (...args) => {
+		if (plugin?.data?.settings?.debug) {
+			console.log(...args);
+		}
+	};
+
 	let selectedRuleId = null;
 	let currentRule = createNewRule();
 	let scopeType = 'vault';
@@ -113,14 +120,14 @@
 				parseCondition(condition);
 			} catch (e) {
 				conditionError = e instanceof Error ? e.message : 'Invalid condition';
-				console.log('Condition error:', conditionError);
+				debugLog('Condition error:', conditionError);
 				return false;
 			}
 		}
 
 		if (!action.trim()) {
 			actionError = 'Action is required';
-			console.log('Action error:', actionError);
+			debugLog('Action error:', actionError);
 			return false;
 		}
 
@@ -128,23 +135,23 @@
 			parseAction(action);
 		} catch (e) {
 			actionError = e instanceof Error ? e.message : 'Invalid action';
-			console.log('Action error:', actionError);
+			debugLog('Action error:', actionError);
 			return false;
 		}
 
-		console.log('Validation passed');
+		debugLog('Validation passed');
 		new Notice('✓ Validation passed - rule is valid');
 		return true;
 	}
 
 	async function preview() {
-		console.log('Preview clicked');
+		debugLog('Preview clicked');
 		if (!validate()) {
-			console.log('Validation failed');
+			debugLog('Validation failed');
 			return;
 		}
 
-		console.log('Starting preview...');
+		debugLog('Starting preview...');
 		previewLoading = true;
 		previewError = null;
 		showValidationSection = true;
@@ -168,7 +175,7 @@
 				{ maxFiles: plugin.data.settings.maxFilesPerBatch || 100 }
 			);
 
-			console.log('Files scanned:', scanResult.matched.length);
+			debugLog('Files scanned:', scanResult.matched.length);
 
 			// Execute dry-run (SAFETY: dryRun=true means no writes)
 			const result = await processBatch(
@@ -179,7 +186,7 @@
 				{ dryRun: true }
 			);
 
-			console.log('Preview results:', result.results.length);
+			debugLog('Preview results:', result.results.length);
 			previewResults = result.results;
 			hasPreviewedRule = true;
 		} catch (error) {

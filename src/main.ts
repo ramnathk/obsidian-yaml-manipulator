@@ -17,7 +17,15 @@ import { createLogger, generateLogPath } from './core/logger';
 export default class YamlManipulatorPlugin extends Plugin {
 	data: PluginData;
 
+	/** Debug logging helper - only logs if debug mode is enabled */
+	debugLog(...args: any[]) {
+		if (this.data?.settings?.debug) {
+			console.log('[YAML Manipulator]', ...args);
+		}
+	}
+
 	async onload() {
+		// Always log loading (before settings are loaded)
 		console.log('Loading YAML Manipulator plugin');
 
 		// Load plugin data
@@ -29,11 +37,11 @@ export default class YamlManipulatorPlugin extends Plugin {
 		// Add settings tab
 		this.addSettingTab(new YamlManipulatorSettingTab(this.app, this));
 
-		console.log('YAML Manipulator plugin loaded successfully');
+		this.debugLog('Plugin loaded successfully');
 	}
 
 	onunload() {
-		console.log('Unloading YAML Manipulator plugin');
+		this.debugLog('Plugin unloading');
 	}
 
 	registerCommands() {
