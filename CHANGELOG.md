@@ -1,7 +1,7 @@
 # Changelog
 
 ## [1.1.4] - 2025-12-04
-**3** commits in this release
+**5** commits in this release
 
 
 
@@ -12,5 +12,7 @@
 
 ### 📝 Other Changes
 
+- Add v2.0 grammar and implementation plan (2fd5ce8)
+- Karthikeyan R ()
 - Karthikeyan R ()
 
