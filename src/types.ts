@@ -374,6 +374,7 @@ export interface MoveAction {
 	toIndex: number;
 }
 
+// Internal representation for: FOR array WHERE condition MOVE TO position
 export interface MoveWhereAction {
 	op: 'MOVE_WHERE';
 	path: string;
@@ -386,6 +387,7 @@ export interface MoveRelativeTarget {
 	reference: ConditionAST;
 }
 
+// Internal representation for: FOR array WHERE condition SET field value
 export interface UpdateWhereAction {
 	op: 'UPDATE_WHERE';
 	path: string;

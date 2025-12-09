@@ -2,7 +2,8 @@
  * Array Actions - Execute array operations on YAML data
  * Based on requirements Section 4.2
  *
- * Implements all 17 array operations including complex ones like UPDATE_WHERE and MOVE_WHERE
+ * Implements all 17 array operations including conditional operations
+ * (accessed via unified syntax: FOR array WHERE condition SET/MOVE/etc.)
  */
 
 import { ActionResult } from '../types';

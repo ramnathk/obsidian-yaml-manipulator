@@ -63,7 +63,7 @@ export enum ActionTokenType {
 	LBRACKET = 'LBRACKET',
 	RBRACKET = 'RBRACKET',
 
-	// Operators (for embedded conditions in UPDATE_WHERE/MOVE_WHERE)
+	// Operators (for embedded conditions in FOR...WHERE operations)
 	EQUALS = 'EQUALS',
 	NOT_EQUALS = 'NOT_EQUALS',
 	GREATER_THAN = 'GREATER_THAN',

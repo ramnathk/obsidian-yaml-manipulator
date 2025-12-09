@@ -35,11 +35,11 @@ interface CategoryTests {
 }
 
 /**
- * Parse examples from VitePress documentation
- * Single source of truth: docs-site/reference/test-suite.md
+ * Parse examples from private documentation
+ * Single source of truth: docs/dev/test-suite.md (private, not in public docs)
  */
 function parseExamplesFile(): Example[] {
-  const examplesPath = path.join(__dirname, '../../docs-site/reference/test-suite.md');
+  const examplesPath = path.join(__dirname, '../../docs/dev/test-suite.md');
   const content = fs.readFileSync(examplesPath, 'utf8');
 
   const examples: Example[] = [];
