@@ -91,6 +91,12 @@ describe('RuleBuilderModal UI Tests', () => {
 			app: {
 				vault: {
 					getMarkdownFiles: vi.fn().mockReturnValue(mockFiles),
+					getAllFolders: vi.fn().mockReturnValue([
+						{ path: 'Projects' },
+						{ path: 'Projects/Work' },
+						{ path: 'Notes' },
+						{ path: 'Archive' }
+					]),
 					read: vi.fn().mockResolvedValue('---\nstatus: draft\npriority: 5\n---\n\nContent'),
 					modify: vi.fn().mockResolvedValue(undefined),
 					adapter: {

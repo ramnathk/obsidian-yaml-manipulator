@@ -8,6 +8,7 @@
 	import { parseAction } from '../parser/actionParser';
 	import PreviewTab from './components/PreviewTab.svelte';
 	import TestTab from './components/TestTab.svelte';
+	import FolderAutocomplete from './components/FolderAutocomplete.svelte';
 	import { t$ } from '../i18n';
 
 	// Use $t for Svelte reactive translations
@@ -337,7 +338,12 @@
 				</label>
 			</div>
 			{#if scopeType === 'folder'}
-				<input type="text" bind:value={folderPath} placeholder={t('ruleBuilder.fields.scope.folderPlaceholder')} />
+				<FolderAutocomplete
+					app={plugin.app}
+					bind:value={folderPath}
+					placeholder={t('ruleBuilder.fields.scope.folderPlaceholder')}
+					on:change={(e) => folderPath = e.detail}
+				/>
 			{/if}
 		</fieldset>
 
