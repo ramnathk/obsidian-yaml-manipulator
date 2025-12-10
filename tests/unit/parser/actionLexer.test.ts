@@ -14,13 +14,6 @@ describe('Action Lexer', () => {
 			expect(tokens[2]).toMatchObject({ type: ActionTokenType.STRING, value: 'published' });
 		});
 
-		it.skip('should tokenize ADD operation', () => {
-			const tokens = tokenizeAction('ADD createdDate "2025-11-20"');
-			expect(tokens[0]).toMatchObject({ type: ActionTokenType.ADD });
-			expect(tokens[1]).toMatchObject({ type: ActionTokenType.IDENTIFIER, value: 'createdDate' });
-			expect(tokens[2]).toMatchObject({ type: ActionTokenType.STRING, value: '2025-11-20' });
-		});
-
 		it('should tokenize DELETE operation', () => {
 			const tokens = tokenizeAction('DELETE draft');
 			expect(tokens[0]).toMatchObject({ type: ActionTokenType.DELETE });
@@ -64,20 +57,6 @@ describe('Action Lexer', () => {
 		it('should tokenize REMOVE', () => {
 			const tokens = tokenizeAction('REMOVE tags "draft"');
 			expect(tokens[0]).toMatchObject({ type: ActionTokenType.REMOVE });
-		});
-
-		it.skip('should tokenize REMOVE_AT', () => {
-			const tokens = tokenizeAction('REMOVE_AT tags -1');
-			expect(tokens[0]).toMatchObject({ type: ActionTokenType.REMOVE_AT });
-			expect(tokens[1]).toMatchObject({ type: ActionTokenType.IDENTIFIER, value: 'tags' });
-			expect(tokens[2]).toMatchObject({ type: ActionTokenType.NUMBER, value: -1 });
-		});
-
-		it.skip('should tokenize REPLACE', () => {
-			const tokens = tokenizeAction('REPLACE tags "old" WITH "new"');
-			expect(tokens[0]).toMatchObject({ type: ActionTokenType.REPLACE });
-			expect(tokens[3]).toMatchObject({ type: ActionTokenType.WITH });
-			expect(tokens[4]).toMatchObject({ type: ActionTokenType.STRING, value: 'new' });
 		});
 
 		it('should tokenize SORT with order', () => {

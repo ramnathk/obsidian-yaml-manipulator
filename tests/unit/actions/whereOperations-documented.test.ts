@@ -108,11 +108,14 @@ describe('UPDATE_WHERE - Documented Examples', () => {
 	});
 
 	describe('Example: Auto-Complete Books (Field Comparison)', () => {
-		it.skip('should mark books as finished when currentPage equals total pages (TODO: field-to-field comparison not yet implemented)', () => {
-			// TODO: This feature is documented but not yet implemented
+		it.skip('TODO: Field-to-field comparison - mark books as finished when currentPage equals total pages', () => {
+			// Feature: Compare two fields in WHERE clause instead of field-to-literal
+			// Current syntax: WHERE currentPage = 328 (field compared to literal value)
+			// Desired syntax: WHERE currentPage = pages (two fields compared)
+			//
+			// Use case: Auto-complete books when currentPage reaches total pages
 			// Requirements: docs/prp/requirements.md - Example 3
-			// Implementation needed: Support field-to-field comparison in WHERE clause
-			// Syntax: WHERE currentPage = pages (compare two fields, not field to literal)
+			// Implementation: Extend conditionEvaluator to detect field-to-field comparisons
 
 			const data = {
 				readingList: [

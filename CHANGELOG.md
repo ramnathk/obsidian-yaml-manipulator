@@ -1,12 +1,14 @@
 # Changelog
 
 ## [1.3.3] - 2025-12-10
-**8** commits in this release
+**10** commits in this release
 
 
 
 ### 📝 Other Changes
 
+- Remove 15 obsolete skipped tests, improve TODO comments (a9024f7)
+- Karthikeyan R ()
 - Remove redundant v2 test files (ed98fd5)
 - Karthikeyan R ()
 - Remove unused svelte-preprocess dependency (84952b7)

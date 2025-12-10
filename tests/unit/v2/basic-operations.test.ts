@@ -211,9 +211,13 @@ describe('v2.0 Grammar: Basic Operations', () => {
     });
   });
 
-  describe.skip('Multiple actions (comma-separated)', () => {
-    // TODO: Implement comma-separated actions in parser
-    // Currently parseAction() only supports single actions
+  describe.skip('TODO: Multiple comma-separated actions', () => {
+    // Feature: Execute multiple actions in a single rule
+    // Current syntax: Only one action per rule
+    // Desired syntax: SET status "completed", SET completed_date "2024-01-15"
+    //
+    // Implementation: Extend actionParser to support comma-separated action sequences
+    // Currently parseAction() returns single ActionNode, needs to return ActionNode[]
     it('should parse: SET status "completed", SET completed_date "2024-01-15"', () => {
       const input = 'SET status "completed", SET completed_date "2024-01-15"';
       // Parser should return array of actions

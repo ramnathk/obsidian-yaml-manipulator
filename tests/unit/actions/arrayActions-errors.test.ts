@@ -105,13 +105,6 @@ describe('Array Actions - Error Handling', () => {
 			expect(data.items[0]).toBe('start');
 		});
 
-		it.skip('should handle out-of-bounds negative index', () => {
-			const data = { items: ['a', 'b'] };
-			const result = executeRemoveAt(data, 'items', -100);
-			expect(result.success).toBe(false);
-			expect(result.error).toContain('out of bounds');
-		});
-
 		it('MOVE with invalid from index', () => {
 			const data = { items: ['a', 'b'] };
 			const result = executeMove(data, 'items', 100, 0);
@@ -124,20 +117,6 @@ describe('Array Actions - Error Handling', () => {
 			const result = executeMove(data, 'items', 0, 100);
 			expect(result.success).toBe(false);
 			expect(result.error).toContain('out of bounds');
-		});
-
-		it.skip('INSERT_AFTER should error when target not found', () => {
-			const data = { tags: ['a', 'b'] };
-			const result = executeInsertAfter(data, 'tags', 'new', 'missing');
-			expect(result.success).toBe(false);
-			expect(result.error).toContain('not found');
-		});
-
-		it.skip('INSERT_BEFORE should error when target not found', () => {
-			const data = { tags: ['a', 'b'] };
-			const result = executeInsertBefore(data, 'tags', 'new', 'missing');
-			expect(result.success).toBe(false);
-			expect(result.error).toContain('not found');
 		});
 
 		it('REMOVE when value not found should silently succeed', () => {
@@ -154,22 +133,6 @@ describe('Array Actions - Error Handling', () => {
 			expect(result.success).toBe(true);
 			expect(result.modified).toBe(true); // Silent success
 			expect(result.warning).toBeUndefined();
-		});
-
-		it.skip('REPLACE when value not found should warn', () => {
-			const data = { tags: ['a', 'b'] };
-			const result = executeReplace(data, 'tags', 'missing', 'new');
-			expect(result.success).toBe(true);
-			expect(result.modified).toBe(false);
-			expect(result.warning).toContain('not found');
-		});
-
-		it.skip('REPLACE_ALL when value not found should warn', () => {
-			const data = { tags: ['a', 'b'] };
-			const result = executeReplaceAll(data, 'tags', 'missing', 'new');
-			expect(result.success).toBe(true);
-			expect(result.modified).toBe(false);
-			expect(result.warning).toContain('not found');
 		});
 
 		it('FOR with DEDUPLICATE no duplicates should warn', () => {

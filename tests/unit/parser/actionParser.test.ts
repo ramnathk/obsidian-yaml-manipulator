@@ -224,25 +224,6 @@ describe('Action Parser', () => {
 			});
 		});
 
-		it.skip('should parse INSERT_AFTER with reference value', () => {
-			const ast = parseAction('INSERT_AFTER tags "followup" AFTER "urgent"');
-			expect(toV1AST(ast)).toMatchObject({
-				op: 'INSERT_AFTER',
-				path: 'tags',
-				value: 'followup',
-				target: 'urgent',
-			});
-		});
-
-		it.skip('should parse INSERT_BEFORE', () => {
-			const ast = parseAction('INSERT_BEFORE tags "pre-check" BEFORE "processed"');
-			expect(toV1AST(ast)).toMatchObject({
-				op: 'INSERT_BEFORE',
-				path: 'tags',
-				value: 'pre-check',
-				target: 'processed',
-			});
-		});
 
 		it('should parse REMOVE', () => {
 			const ast = parseAction('FOR tags REMOVE "draft"');
@@ -262,34 +243,6 @@ describe('Action Parser', () => {
 			});
 		});
 
-		it.skip('should parse REMOVE_AT', () => {
-			const ast = parseAction('REMOVE_AT tags 0');
-			expect(toV1AST(ast)).toMatchObject({
-				op: 'REMOVE_AT',
-				path: 'tags',
-				index: 0,
-			});
-		});
-
-		it.skip('should parse REPLACE', () => {
-			const ast = parseAction('REPLACE tags "old" WITH "new"');
-			expect(toV1AST(ast)).toMatchObject({
-				op: 'REPLACE',
-				path: 'tags',
-				oldValue: 'old',
-				newValue: 'new',
-			});
-		});
-
-		it.skip('should parse REPLACE_ALL', () => {
-			const ast = parseAction('REPLACE_ALL tags "old-tag" WITH "new-tag"');
-			expect(toV1AST(ast)).toMatchObject({
-				op: 'REPLACE_ALL',
-				path: 'tags',
-				oldValue: 'old-tag',
-				newValue: 'new-tag',
-			});
-		});
 
 		it('should parse DEDUPLICATE', () => {
 			const ast = parseAction('FOR tags DEDUPLICATE');

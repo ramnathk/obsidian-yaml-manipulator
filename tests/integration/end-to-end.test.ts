@@ -181,17 +181,6 @@ describe('End-to-End Integration', () => {
 			expect(data.status).toBe('draft');
 		});
 
-		it.skip('ADD should warn when field exists', () => {
-			const data = { status: 'published' };
-
-			const action = parseAction('ADD status "draft"');
-			const result = executeAction(action, data);
-
-			expect(result.success).toBe(true);
-			expect(result.modified).toBe(false);
-			expect(result.warning).toContain('already exists');
-			expect(data.status).toBe('published'); // Unchanged
-		});
 
 		it('should error when operating on non-array', () => {
 			const data = { tags: 'not-an-array' };

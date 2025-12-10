@@ -31,28 +31,4 @@ describe('Edge Cases', () => {
 
   });
 
-  test.skip('Example 68: Invalid YAML (parse error)', () => {
-    // NOTE: This test is skipped because testRuleExecutor works with parsed objects,
-    // not raw YAML strings, so it cannot test YAML parsing errors.
-    // YAML parsing is tested separately in yamlProcessor tests.
-
-    // Input YAML
-    const input = {};
-
-    // Rule
-    const condition = "";
-    const action = "SET reviewed true";
-
-    // Execute rule
-    const result = executeTestRule({ condition, action }, input);
-
-    // Expected output
-    const expectedOutput = null;
-    const expectedStatus = "error";
-
-    // Assertions
-    expect(result.status).toBe(expectedStatus);
-    // Error case - data unchanged, just verify error occurred
-
-  });
 });
