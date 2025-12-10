@@ -1,12 +1,15 @@
 # Changelog
 
 ## [1.3.3] - 2025-12-10
-**13** commits in this release
+**16** commits in this release
 
 
 
 ### 📝 Other Changes
 
+- Merge pull request #14 from ramnathk/docfix (539820e)
+- Fix broken documentation links and navigation (a54ccdc)
+- Karthikeyan R ()
 - Remove all skipped tests - track TODOs in GitHub issues (6222219)
 -  0 skipped (was 18 skipped) (Test co)
 - Karthikeyan R ()
