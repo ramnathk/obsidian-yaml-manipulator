@@ -108,35 +108,8 @@ describe('UPDATE_WHERE - Documented Examples', () => {
 	});
 
 	describe('Example: Auto-Complete Books (Field Comparison)', () => {
-		it.skip('TODO: Field-to-field comparison - mark books as finished when currentPage equals total pages', () => {
-			// Feature: Compare two fields in WHERE clause instead of field-to-literal
-			// Current syntax: WHERE currentPage = 328 (field compared to literal value)
-			// Desired syntax: WHERE currentPage = pages (two fields compared)
-			//
-			// Use case: Auto-complete books when currentPage reaches total pages
-			// Requirements: docs/prp/requirements.md - Example 3
-			// Implementation: Extend conditionEvaluator to detect field-to-field comparisons
-
-			const data = {
-				readingList: [
-					{ title: '1984', pages: 328, currentPage: 328, status: 'reading' },
-					{ title: 'Dune', pages: 688, currentPage: 350, status: 'reading' },
-					{ title: 'Foundation', pages: 255, currentPage: 255, status: 'reading' },
-				],
-			};
-
-			// When implemented, this should compare currentPage field to pages field
-			// const condition = parseCondition('currentPage = pages');
-			// const result = executeUpdateWhere(data, 'readingList', condition, [
-			// 	{ field: 'status', value: 'finished' },
-			// 	{ field: 'completedDate', value: '2025-12-03' },
-			// ]);
-
-			// expect(result.success).toBe(true);
-			// expect(data.readingList[0].status).toBe('finished'); // 328 = 328
-			// expect(data.readingList[1].status).toBe('reading');   // 350 != 688
-			// expect(data.readingList[2].status).toBe('finished');  // 255 = 255
-		});
+		// Note: Field-to-field comparison test removed - tracked in issue #6
+		// https://github.com/ramnathk/my-obsidian-yaml-manipulator/issues/6
 
 		it('should mark books as finished when currentPage reaches specific value', () => {
 			const data = {

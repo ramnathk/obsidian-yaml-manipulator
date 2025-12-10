@@ -211,39 +211,8 @@ describe('v2.0 Grammar: Basic Operations', () => {
     });
   });
 
-  describe.skip('TODO: Multiple comma-separated actions', () => {
-    // Feature: Execute multiple actions in a single rule
-    // Current syntax: Only one action per rule
-    // Desired syntax: SET status "completed", SET completed_date "2024-01-15"
-    //
-    // Implementation: Extend actionParser to support comma-separated action sequences
-    // Currently parseAction() returns single ActionNode, needs to return ActionNode[]
-    it('should parse: SET status "completed", SET completed_date "2024-01-15"', () => {
-      const input = 'SET status "completed", SET completed_date "2024-01-15"';
-      // Parser should return array of actions
-      const result = parseAction(input);
-
-      expect(Array.isArray(result)).toBe(true);
-      expect(result).toHaveLength(2);
-      expect(result[0].operation.type).toBe('SET');
-      expect(result[1].operation.type).toBe('SET');
-    });
-
-    it('should execute multiple actions in sequence', () => {
-      const data = { title: 'Task', status: 'pending' };
-      const input = 'SET status "completed", SET completed_date "2024-01-15", DELETE draft';
-      const actions = parseAction(input);
-      const result = executeActions(data, actions);
-
-      expect(result.success).toBe(true);
-      expect(result.data).toEqual({
-        title: 'Task',
-        status: 'completed',
-        completed_date: '2024-01-15'
-      });
-      expect(result.changes).toHaveLength(3);
-    });
-  });
+  // Note: Multiple comma-separated actions tests removed - tracked in issue #13
+  // https://github.com/ramnathk/my-obsidian-yaml-manipulator/issues/13
 
   describe('Error handling', () => {
     it('should reject: FOR title SET "value" (FOR not allowed on scalars)', () => {
