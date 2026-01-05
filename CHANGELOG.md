@@ -1,12 +1,14 @@
 # Changelog
 
 ## [1.3.3] - 2026-01-05
-**40** commits in this release
+**42** commits in this release
 
 
 
 ### 📝 Other Changes
 
+- Remove redundant ci.yml and add test-failure protection (fc193ce)
+- ramnathk ()
 - Fix coverage path: move to /docs/coverage for GitHub Pages (6387ccb)
 - ramnathk ()
 - Consolidate CI workflows and add online coverage reports (5c92f74)
