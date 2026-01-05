@@ -37,7 +37,7 @@ This plugin is currently in beta. Install via BRAT for automatic updates:
 ### Basic Workflow
 
 1. Open the command palette (`Cmd/Ctrl + P`)
-2. Search for "YAML Toolkit for Obsidian"
+2. Search for "YAML Toolkit"
 3. Select your desired operation
 4. Configure conditions and actions
 5. Preview changes

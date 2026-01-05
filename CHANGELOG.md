@@ -1,12 +1,14 @@
 # Changelog
 
 ## [1.3.3] - 2026-01-05
-**28** commits in this release
+**30** commits in this release
 
 
 
 ### 📝 Other Changes
 
+- Fix branding: correct 'YAML Toolkit' in Obsidian UI references (fa3676e)
+- Karthikeyan R ()
 - Fix E2E tests to always rebuild plugin before running (c5caaa1)
 - Karthikeyan R ()
 - Add E2E test to verify plugin name branding (a637882)
