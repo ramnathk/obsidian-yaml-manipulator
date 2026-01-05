@@ -6,7 +6,7 @@
  */
 
 import { Plugin } from 'obsidian';
-import { PluginData, Rule, YamlManipulatorSettings } from '../types';
+import { PluginData, Rule, YamlToolkitSettings } from '../types';
 import { DEFAULT_SETTINGS } from '../settings';
 
 /**

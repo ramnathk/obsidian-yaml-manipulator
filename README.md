@@ -1,4 +1,4 @@
-# YAML Manipulator
+# YAML Toolkit
 
 Bulk manipulate YAML front matter with condition-based rules and preview.
 
@@ -20,14 +20,14 @@ This plugin is currently in beta. Install via BRAT for automatic updates:
 1. Install the [BRAT plugin](https://github.com/TfTHacker/obsidian42-brat)
 2. Open BRAT settings (Settings → BRAT)
 3. Click "Add Beta plugin"
-4. Enter: `ramnathk/obsidian-yaml-manipulator`
+4. Enter: `ramnathk/obsidian-yaml-toolkit`
 5. Click "Add Plugin"
 6. Enable the plugin in Settings → Community Plugins
 
 ### Manual Installation
 
-1. Download `main.js`, `manifest.json`, and `styles.css` from the [latest release](https://github.com/ramnathk/obsidian-yaml-manipulator/releases/latest)
-2. Create a folder in your vault: `.obsidian/plugins/yaml-manipulator/`
+1. Download `main.js`, `manifest.json`, and `styles.css` from the [latest release](https://github.com/ramnathk/obsidian-yaml-toolkit/releases/latest)
+2. Create a folder in your vault: `.obsidian/plugins/yaml-toolkit/`
 3. Copy the downloaded files to this folder
 4. Reload Obsidian
 5. Enable the plugin in Settings → Community Plugins
@@ -37,7 +37,7 @@ This plugin is currently in beta. Install via BRAT for automatic updates:
 ### Basic Workflow
 
 1. Open the command palette (`Cmd/Ctrl + P`)
-2. Search for "YAML Manipulator"
+2. Search for "YAML Toolkit for Obsidian"
 3. Select your desired operation
 4. Configure conditions and actions
 5. Preview changes
@@ -70,21 +70,21 @@ This plugin is currently in beta. Install via BRAT for automatic updates:
 
 ## Documentation
 
-📚 **[Full Documentation Site](https://ramnathk.github.io/obsidian-yaml-manipulator/)** - Complete guides, examples, and reference
+📚 **[Full Documentation Site](https://ramnathk.github.io/obsidian-yaml-toolkit/)** - Complete guides, examples, and reference
 
 ### Quick Links
 
-- **[Getting Started](https://ramnathk.github.io/obsidian-yaml-manipulator/guide/getting-started)** - Learn the basics
-- **[Installation Guide](https://ramnathk.github.io/obsidian-yaml-manipulator/guide/installation)** - Step-by-step setup
-- **[Syntax Reference](https://ramnathk.github.io/obsidian-yaml-manipulator/reference/syntax)** - Complete syntax guide
-- **[Examples](https://ramnathk.github.io/obsidian-yaml-manipulator/reference/examples)** - Real-world use cases
-- **[Advanced Usage](https://ramnathk.github.io/obsidian-yaml-manipulator/guide/advanced-queries)** - Power user features
+- **[Getting Started](https://ramnathk.github.io/obsidian-yaml-toolkit/guide/getting-started)** - Learn the basics
+- **[Installation Guide](https://ramnathk.github.io/obsidian-yaml-toolkit/guide/installation)** - Step-by-step setup
+- **[Syntax Reference](https://ramnathk.github.io/obsidian-yaml-toolkit/reference/syntax)** - Complete syntax guide
+- **[Examples](https://ramnathk.github.io/obsidian-yaml-toolkit/reference/examples)** - Real-world use cases
+- **[Advanced Usage](https://ramnathk.github.io/obsidian-yaml-toolkit/guide/advanced-queries)** - Power user features
 
 ## Support
 
 If you encounter issues or have feature requests:
 
-1. Check the [GitHub Issues](https://github.com/ramnathk/obsidian-yaml-manipulator/issues)
+1. Check the [GitHub Issues](https://github.com/ramnathk/obsidian-yaml-toolkit/issues)
 2. Create a new issue with:
    - Description of the problem
    - Steps to reproduce

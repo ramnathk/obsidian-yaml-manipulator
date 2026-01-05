@@ -1,5 +1,5 @@
 /**
- * Core TypeScript interfaces for YAML Manipulator plugin
+ * Core TypeScript interfaces for YAML Toolkit plugin
  * Based on requirements Section 7.3 and 12.1
  */
 
@@ -116,7 +116,7 @@ export interface RuleOptions {
 /**
  * Plugin settings
  */
-export interface YamlManipulatorSettings {
+export interface YamlToolkitSettings {
 	/** Whether to create backups by default */
 	defaultBackup: boolean;
 	/** Timeout for vault scanning (ms) */
@@ -136,7 +136,7 @@ export interface PluginData {
 	/** ISO 8601 timestamp of last run */
 	lastRun?: string;
 	/** Plugin settings */
-	settings: YamlManipulatorSettings;
+	settings: YamlToolkitSettings;
 }
 
 /**

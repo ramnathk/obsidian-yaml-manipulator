@@ -1,12 +1,20 @@
 # Changelog
 
-## [1.3.3] - 2025-12-10
-**16** commits in this release
+## [1.3.3] - 2026-01-05
+**24** commits in this release
 
 
 
 ### 📝 Other Changes
 
+- Trigger sync after Phase 2 repository rename (73ee9e4)
+- Karthikeyan R ()
+- Merge rebrand: YAML Manipulator → YAML Toolkit (4e02073)
+- Karthikeyan R ()
+- Refine rebrand: 'YAML Toolkit' internally, 'for Obsidian' for SEO (6db2e24)
+- Karthikeyan R ()
+- Rebrand to YAML Toolkit for Obsidian (6697372)
+- Karthikeyan R ()
 - Merge pull request #14 from ramnathk/docfix (539820e)
 - Fix broken documentation links and navigation (a54ccdc)
 - Karthikeyan R ()

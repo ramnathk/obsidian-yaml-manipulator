@@ -139,7 +139,7 @@ describe('RuleBuilderModal UI Tests', () => {
 			});
 
 			// Check for main elements
-			expect(screen.getByText('YAML Rule Builder')).toBeInTheDocument();
+			expect(screen.getByText('YAML Toolkit: Rule Builder')).toBeInTheDocument();
 			expect(screen.getByLabelText(/Rule Name/i)).toBeInTheDocument();
 			expect(screen.getByLabelText(/Find files based on frontmatter/i)).toBeInTheDocument();
 			expect(screen.getByLabelText(/Action/i)).toBeInTheDocument();

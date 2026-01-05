@@ -29,7 +29,7 @@ export class FrontmatterDisplayModal extends Modal {
 		// Display frontmatter
 		if (this.frontmatterData && Object.keys(this.frontmatterData).length > 0) {
 			const pre = contentEl.createEl('pre', {
-				cls: 'yaml-manipulator-frontmatter-display',
+				cls: 'yaml-toolkit-frontmatter-display',
 			});
 
 			pre.style.backgroundColor = 'var(--background-secondary)';
@@ -43,7 +43,7 @@ export class FrontmatterDisplayModal extends Modal {
 		} else {
 			contentEl.createEl('p', {
 				text: 'No frontmatter found',
-				cls: 'yaml-manipulator-empty-message',
+				cls: 'yaml-toolkit-empty-message',
 			});
 		}
 
@@ -95,7 +95,7 @@ export class MessageModal extends Modal {
 
 		// Display message
 		const messageEl = contentEl.createEl('div', {
-			cls: 'yaml-manipulator-message',
+			cls: 'yaml-toolkit-message',
 		});
 
 		messageEl.style.padding = '12px';

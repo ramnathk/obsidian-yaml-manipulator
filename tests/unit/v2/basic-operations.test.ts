@@ -212,7 +212,7 @@ describe('v2.0 Grammar: Basic Operations', () => {
   });
 
   // Note: Multiple comma-separated actions tests removed - tracked in issue #13
-  // https://github.com/ramnathk/my-obsidian-yaml-manipulator/issues/13
+  // https://github.com/ramnathk/obsidian-yaml-toolkit-private/issues/13
 
   describe('Error handling', () => {
     it('should reject: FOR title SET "value" (FOR not allowed on scalars)', () => {

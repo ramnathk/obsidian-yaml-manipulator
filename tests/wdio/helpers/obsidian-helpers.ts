@@ -50,7 +50,7 @@ export async function executeCommand() {
 /**
  * Wait for modal to appear
  */
-export async function waitForModal(className: string = '.yaml-manipulator-modal', timeout: number = 5000) {
+export async function waitForModal(className: string = '.yaml-toolkit-modal', timeout: number = 5000) {
 	const modal = await $(className);
 	await modal.waitForDisplayed({ timeout });
 	return modal;

@@ -1,4 +1,4 @@
-# Test Suite for YAML Manipulator
+# Test Suite for YAML Toolkit for Obsidian
 
 This directory contains automated tests generated from `docs/examples.md` and hand-written integration tests.
 

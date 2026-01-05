@@ -1,5 +1,5 @@
 /**
- * YAML Manipulator Plugin - Main Entry Point
+ * YAML Toolkit - Main Entry Point
  * Obsidian plugin for bulk YAML frontmatter manipulation
  */
 
@@ -15,13 +15,13 @@ import { initI18n, t } from './i18n';
 /**
  * Main plugin class
  */
-export default class YamlManipulatorPlugin extends Plugin {
+export default class YamlToolkitPlugin extends Plugin {
 	data: PluginData;
 
 	/** Debug logging helper - only logs if debug mode is enabled */
 	debugLog(...args: any[]) {
 		if (this.data?.settings?.debug) {
-			console.log('[YAML Manipulator]', ...args);
+			console.log('[YAML Toolkit]', ...args);
 		}
 	}
 
@@ -39,7 +39,7 @@ export default class YamlManipulatorPlugin extends Plugin {
 		this.registerCommands();
 
 		// Add settings tab
-		this.addSettingTab(new YamlManipulatorSettingTab(this.app, this));
+		this.addSettingTab(new YamlToolkitSettingTab(this.app, this));
 
 		this.debugLog('Plugin loaded successfully');
 	}
@@ -71,10 +71,10 @@ export default class YamlManipulatorPlugin extends Plugin {
 /**
  * Settings tab
  */
-class YamlManipulatorSettingTab extends PluginSettingTab {
-	plugin: YamlManipulatorPlugin;
+class YamlToolkitSettingTab extends PluginSettingTab {
+	plugin: YamlToolkitPlugin;
 
-	constructor(app: any, plugin: YamlManipulatorPlugin) {
+	constructor(app: any, plugin: YamlToolkitPlugin) {
 		super(app, plugin);
 		this.plugin = plugin;
 	}

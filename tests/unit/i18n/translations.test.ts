@@ -24,11 +24,11 @@ import enTranslations from '../../../src/i18n/locales/en.json';
 
 describe('Translation Baseline - Plugin', () => {
 	it('should have correct plugin name', () => {
-		expect(enTranslations.plugin.name).toBe('YAML Manipulator');
+		expect(enTranslations.plugin.name).toBe('YAML Toolkit');
 	});
 
 	it('should have correct loading message', () => {
-		expect(enTranslations.plugin.loading).toBe('Loading YAML Manipulator plugin');
+		expect(enTranslations.plugin.loading).toBe('Loading YAML Toolkit plugin');
 	});
 });
 
@@ -40,7 +40,7 @@ describe('Translation Baseline - Commands', () => {
 
 describe('Translation Baseline - Settings', () => {
 	it('should have correct settings title', () => {
-		expect(enTranslations.settings.title).toBe('YAML Manipulator Settings');
+		expect(enTranslations.settings.title).toBe('YAML Toolkit Settings');
 	});
 
 	it('should have correct default backup settings', () => {
@@ -58,7 +58,7 @@ describe('Translation Baseline - Settings', () => {
 
 describe('Translation Baseline - Rule Builder', () => {
 	it('should have correct rule builder title', () => {
-		expect(enTranslations.ruleBuilder.title).toBe('YAML Rule Builder');
+		expect(enTranslations.ruleBuilder.title).toBe('YAML Toolkit: Rule Builder');
 	});
 
 	it('should have correct saved rules labels', () => {

@@ -3,12 +3,12 @@
  * Based on requirements Section 12 (Plugin Settings)
  */
 
-import { YamlManipulatorSettings } from './types';
+import { YamlToolkitSettings } from './types';
 
 /**
  * Default plugin settings
  */
-export const DEFAULT_SETTINGS: YamlManipulatorSettings = {
+export const DEFAULT_SETTINGS: YamlToolkitSettings = {
 	/** Create backups by default (safe default) */
 	defaultBackup: true,
 

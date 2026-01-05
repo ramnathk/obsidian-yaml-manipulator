@@ -71,7 +71,7 @@ describe('Commands - Integration', () => {
 		await searchCommand('Open Rule Builder');
 		await executeCommand();
 
-		const modal = await waitForModal('.yaml-manipulator-modal', 5000);
+		const modal = await waitForModal('.yaml-toolkit-modal', 5000);
 		expect(await modal.isDisplayed()).toBe(true);
 
 		const header = await modal.$('h2');

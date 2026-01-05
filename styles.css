@@ -1,19 +1,19 @@
-/* YAML Manipulator Plugin Styles */
+/* YAML Toolkit for Obsidian - Plugin Styles */
 
 /* Modal overrides */
-.modal.yaml-rule-builder-modal {
+.modal.yaml-toolkit-rule-builder-modal {
 	width: 800px;
 	max-width: 90vw;
 }
 
-.yaml-manipulator-modal {
+.yaml-toolkit-modal {
 	padding: 0;
 	width: 100%;
 	max-height: 85vh;
 	overflow-y: auto;
 }
 
-.yaml-manipulator-modal h2 {
+.yaml-toolkit-modal h2 {
 	margin: 0 0 var(--size-4-4) 0;
 	padding: var(--size-4-4) var(--size-4-6);
 	background: var(--background-secondary);
@@ -22,16 +22,16 @@
 	font-weight: var(--font-semibold);
 }
 
-.yaml-manipulator-modal .modal-content {
+.yaml-toolkit-modal .modal-content {
 	padding: var(--size-4-4) var(--size-4-6);
 }
 
 /* Form fields */
-.yaml-manipulator-modal .field {
+.yaml-toolkit-modal .field {
 	margin-bottom: var(--size-4-4);
 }
 
-.yaml-manipulator-modal label {
+.yaml-toolkit-modal label {
 	display: block;
 	margin-bottom: var(--size-2-2);
 	font-size: var(--font-ui-small);
@@ -39,9 +39,9 @@
 	color: var(--text-normal);
 }
 
-.yaml-manipulator-modal input[type="text"],
-.yaml-manipulator-modal textarea,
-.yaml-manipulator-modal select {
+.yaml-toolkit-modal input[type="text"],
+.yaml-toolkit-modal textarea,
+.yaml-toolkit-modal select {
 	width: 100%;
 	padding: var(--size-4-2) var(--size-4-3);
 	border: 1px solid var(--background-modifier-border);
@@ -54,7 +54,7 @@
 }
 
 /* Fix for select element - ensure proper height and vertical alignment */
-.yaml-manipulator-modal select {
+.yaml-toolkit-modal select {
 	padding: 10px var(--size-4-3);
 	line-height: 1.6;
 	height: auto;
@@ -62,20 +62,20 @@
 }
 
 /* Select dropdown options */
-.yaml-manipulator-modal select option {
+.yaml-toolkit-modal select option {
 	padding: 10px 12px;
 	line-height: 1.6;
 }
 
-.yaml-manipulator-modal input[type="text"]:focus,
-.yaml-manipulator-modal textarea:focus,
-.yaml-manipulator-modal select:focus {
+.yaml-toolkit-modal input[type="text"]:focus,
+.yaml-toolkit-modal textarea:focus,
+.yaml-toolkit-modal select:focus {
 	border-color: var(--interactive-accent);
 	outline: none;
 	box-shadow: 0 0 0 2px var(--background-modifier-border-focus);
 }
 
-.yaml-manipulator-modal textarea {
+.yaml-toolkit-modal textarea {
 	resize: vertical;
 	min-height: 80px;
 	font-family: var(--font-monospace);
@@ -84,7 +84,7 @@
 }
 
 /* Rule selector */
-.yaml-manipulator-modal .rule-selector {
+.yaml-toolkit-modal .rule-selector {
 	display: flex;
 	gap: var(--size-4-2);
 	margin-bottom: var(--size-4-6);
@@ -94,13 +94,13 @@
 	border-radius: var(--radius-s);
 }
 
-.yaml-manipulator-modal .rule-selector label {
+.yaml-toolkit-modal .rule-selector label {
 	margin: 0;
 	white-space: nowrap;
 	flex-shrink: 0;
 }
 
-.yaml-manipulator-modal .rule-selector select {
+.yaml-toolkit-modal .rule-selector select {
 	flex: 1;
 	min-width: 350px;
 	margin: 0;
@@ -115,23 +115,23 @@
 }
 
 /* Ensure rule selector options also have proper spacing */
-.yaml-manipulator-modal .rule-selector select option {
+.yaml-toolkit-modal .rule-selector select option {
 	padding: 10px 12px;
 	line-height: 1.6;
 }
 
-.yaml-manipulator-modal .rule-selector button {
+.yaml-toolkit-modal .rule-selector button {
 	flex-shrink: 0;
 }
 
 /* Radio buttons */
-.yaml-manipulator-modal .radio-group {
+.yaml-toolkit-modal .radio-group {
 	display: flex;
 	gap: var(--size-4-4);
 	margin-bottom: var(--size-4-2);
 }
 
-.yaml-manipulator-modal .radio-group label {
+.yaml-toolkit-modal .radio-group label {
 	display: flex;
 	align-items: center;
 	gap: var(--size-2-2);
@@ -140,18 +140,18 @@
 	margin: 0;
 }
 
-.yaml-manipulator-modal input[type="radio"] {
+.yaml-toolkit-modal input[type="radio"] {
 	cursor: pointer;
 }
 
 /* Checkboxes */
-.yaml-manipulator-modal input[type="checkbox"] {
+.yaml-toolkit-modal input[type="checkbox"] {
 	cursor: pointer;
 	margin-right: var(--size-2-2);
 }
 
 /* Buttons */
-.yaml-manipulator-modal .button-group {
+.yaml-toolkit-modal .button-group {
 	display: flex;
 	gap: var(--size-4-2);
 	justify-content: space-between;
@@ -160,17 +160,17 @@
 	border-top: 1px solid var(--background-modifier-border);
 }
 
-.yaml-manipulator-modal .button-group .left-buttons {
+.yaml-toolkit-modal .button-group .left-buttons {
 	display: flex;
 	gap: var(--size-4-2);
 }
 
-.yaml-manipulator-modal .button-group .right-buttons {
+.yaml-toolkit-modal .button-group .right-buttons {
 	display: flex;
 	gap: var(--size-4-2);
 }
 
-.yaml-manipulator-modal button {
+.yaml-toolkit-modal button {
 	padding: var(--size-4-2) var(--size-4-4);
 	border-radius: var(--radius-s);
 	border: 1px solid var(--background-modifier-border);
@@ -182,48 +182,48 @@
 	transition: background-color 0.1s ease;
 }
 
-.yaml-manipulator-modal button:hover {
+.yaml-toolkit-modal button:hover {
 	background: var(--interactive-hover);
 }
 
-.yaml-manipulator-modal button:active {
+.yaml-toolkit-modal button:active {
 	background: var(--interactive-active);
 }
 
-.yaml-manipulator-modal button.mod-cta,
-.yaml-manipulator-modal button.cta {
+.yaml-toolkit-modal button.mod-cta,
+.yaml-toolkit-modal button.cta {
 	background: var(--interactive-accent);
 	color: var(--text-on-accent);
 	border-color: var(--interactive-accent);
 }
 
-.yaml-manipulator-modal button.mod-cta:hover,
-.yaml-manipulator-modal button.cta:hover {
+.yaml-toolkit-modal button.mod-cta:hover,
+.yaml-toolkit-modal button.cta:hover {
 	background: var(--interactive-accent-hover);
 }
 
-.yaml-manipulator-modal button.mod-warning,
-.yaml-manipulator-modal button.danger {
+.yaml-toolkit-modal button.mod-warning,
+.yaml-toolkit-modal button.danger {
 	background: var(--color-red);
 	color: var(--text-on-accent);
 	border-color: var(--color-red);
 }
 
-.yaml-manipulator-modal button.mod-warning:hover,
-.yaml-manipulator-modal button.danger:hover {
+.yaml-toolkit-modal button.mod-warning:hover,
+.yaml-toolkit-modal button.danger:hover {
 	background: var(--color-red-hover);
 }
 
-.yaml-manipulator-modal button.secondary {
+.yaml-toolkit-modal button.secondary {
 	background: var(--background-secondary);
 }
 
-.yaml-manipulator-modal button.secondary:hover {
+.yaml-toolkit-modal button.secondary:hover {
 	background: var(--background-secondary-alt);
 }
 
 /* Error messages */
-.yaml-manipulator-modal .error {
+.yaml-toolkit-modal .error {
 	color: var(--text-error);
 	font-size: var(--font-ui-smaller);
 	margin-top: var(--size-4-2);
@@ -231,7 +231,7 @@
 }
 
 /* Field groups */
-.yaml-manipulator-modal .field-group {
+.yaml-toolkit-modal .field-group {
 	background: var(--background-secondary);
 	padding: var(--size-4-3);
 	border-radius: var(--radius-s);
@@ -239,22 +239,22 @@
 }
 
 /* Placeholder styling */
-.yaml-manipulator-modal textarea::placeholder,
-.yaml-manipulator-modal input::placeholder {
+.yaml-toolkit-modal textarea::placeholder,
+.yaml-toolkit-modal input::placeholder {
 	color: var(--text-faint);
 	font-style: italic;
 }
 
 /* Focus states */
-.yaml-manipulator-modal input[type="text"]:focus,
-.yaml-manipulator-modal textarea:focus {
+.yaml-toolkit-modal input[type="text"]:focus,
+.yaml-toolkit-modal textarea:focus {
 	border-color: var(--interactive-accent);
 }
 
 /* Disabled states */
-.yaml-manipulator-modal input:disabled,
-.yaml-manipulator-modal textarea:disabled,
-.yaml-manipulator-modal select:disabled {
+.yaml-toolkit-modal input:disabled,
+.yaml-toolkit-modal textarea:disabled,
+.yaml-toolkit-modal select:disabled {
 	opacity: 0.5;
 	cursor: not-allowed;
 }

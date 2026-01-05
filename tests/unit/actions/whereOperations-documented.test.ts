@@ -109,7 +109,7 @@ describe('UPDATE_WHERE - Documented Examples', () => {
 
 	describe('Example: Auto-Complete Books (Field Comparison)', () => {
 		// Note: Field-to-field comparison test removed - tracked in issue #6
-		// https://github.com/ramnathk/my-obsidian-yaml-manipulator/issues/6
+		// https://github.com/ramnathk/obsidian-yaml-toolkit-private/issues/6
 
 		it('should mark books as finished when currentPage reaches specific value', () => {
 			const data = {

@@ -5,16 +5,16 @@
 
 import { Modal } from 'obsidian';
 import RuleBuilderModal from './RuleBuilderModal.svelte';
-import type YamlManipulatorPlugin from '../main';
+import type YamlToolkitPlugin from '../main';
 
 export class RuleBuilderModalWrapper extends Modal {
 	private component: RuleBuilderModal | null = null;
-	private plugin: YamlManipulatorPlugin;
+	private plugin: YamlToolkitPlugin;
 
-	constructor(plugin: YamlManipulatorPlugin) {
+	constructor(plugin: YamlToolkitPlugin) {
 		super(plugin.app);
 		this.plugin = plugin;
-		this.modalEl.addClass('yaml-rule-builder-modal');
+		this.modalEl.addClass('yaml-toolkit-rule-builder-modal');
 	}
 
 	onOpen() {

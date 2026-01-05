@@ -1,13 +1,13 @@
 {
   "plugin": {
-    "name": "YAML Manipulator",
-    "loading": "Loading YAML Manipulator plugin"
+    "name": "YAML Toolkit",
+    "loading": "Loading YAML Toolkit plugin"
   },
   "commands": {
     "openRuleBuilder": "Open Rule Builder"
   },
   "settings": {
-    "title": "YAML Manipulator Settings",
+    "title": "YAML Toolkit Settings",
     "defaultBackup": {
       "name": "Default Backup",
       "description": "Create backup files (.bak) before making changes"
@@ -18,7 +18,7 @@
     }
   },
   "ruleBuilder": {
-    "title": "YAML Rule Builder",
+    "title": "YAML Toolkit: Rule Builder",
     "savedRules": {
       "label": "Saved Rules:",
       "newRule": "-- New Rule --"

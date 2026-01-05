@@ -3,7 +3,7 @@
  */
 
 import { describe, it, expect, vi, beforeEach, afterEach } from 'vitest';
-import YamlManipulatorPlugin from '../../../src/main';
+import YamlToolkitPlugin from '../../../src/main';
 
 describe('Debug Mode', () => {
 	let consoleLogSpy: any;
@@ -17,7 +17,7 @@ describe('Debug Mode', () => {
 	});
 
 	it('should log when debug mode is enabled', () => {
-		const plugin = new YamlManipulatorPlugin({} as any, {} as any);
+		const plugin = new YamlToolkitPlugin({} as any, {} as any);
 		plugin.data = {
 			version: '1.0.0',
 			rules: [],
@@ -30,11 +30,11 @@ describe('Debug Mode', () => {
 
 		plugin.debugLog('Test message', 123);
 
-		expect(consoleLogSpy).toHaveBeenCalledWith('[YAML Manipulator]', 'Test message', 123);
+		expect(consoleLogSpy).toHaveBeenCalledWith('[YAML Toolkit]', 'Test message', 123);
 	});
 
 	it('should NOT log when debug mode is disabled', () => {
-		const plugin = new YamlManipulatorPlugin({} as any, {} as any);
+		const plugin = new YamlToolkitPlugin({} as any, {} as any);
 		plugin.data = {
 			version: '1.0.0',
 			rules: [],
@@ -52,7 +52,7 @@ describe('Debug Mode', () => {
 	});
 
 	it('should handle missing plugin data gracefully', () => {
-		const plugin = new YamlManipulatorPlugin({} as any, {} as any);
+		const plugin = new YamlToolkitPlugin({} as any, {} as any);
 		// plugin.data is undefined
 
 		plugin.debugLog('Test message');

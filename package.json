@@ -1,12 +1,12 @@
 {
-	"name": "yaml-manipulator",
+	"name": "yaml-toolkit",
 	"version": "0.1.0",
 	"description": "Bulk manipulate YAML front matter with condition-based rules and preview",
 	"main": "main.js",
 	"scripts": {
 		"dev": "node esbuild.config.mjs",
 		"build": "tsc -noEmit -skipLibCheck && node esbuild.config.mjs production",
-		"build:test": "npm run build && cp main.js manifest.json styles.css test-vault/.obsidian/plugins/yaml-manipulator/",
+		"build:test": "npm run build && cp main.js manifest.json styles.css test-vault/.obsidian/plugins/yaml-toolkit/",
 		"build:public": "node scripts/build-public.js",
 		"docs:dev": "vitepress dev docs-site",
 		"docs:build": "vitepress build docs-site",

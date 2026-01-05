@@ -298,7 +298,7 @@
 	};
 </script>
 
-<div class="yaml-manipulator-modal">
+<div class="yaml-toolkit-modal">
 	<h2>{t('ruleBuilder.title')}</h2>
 
 	<div class="modal-content">

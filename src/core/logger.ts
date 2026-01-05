@@ -2,7 +2,7 @@
  * Logger - Log operations to file
  * Based on requirements Section 8
  *
- * Creates detailed operation logs in .obsidian/plugins/yaml-manipulator/logs/
+ * Creates detailed operation logs in .obsidian/plugins/yaml-toolkit/logs/
  */
 
 import { Vault, TFile } from 'obsidian';
@@ -121,5 +121,5 @@ export function createLogger(vault: Vault, logPath: string): Logger {
  */
 export function generateLogPath(): string {
 	const timestamp = DateTime.now().toFormat('yyyy-MM-dd_HH-mm-ss');
-	return `.obsidian/plugins/yaml-manipulator/logs/${timestamp}.log`;
+	return `.obsidian/plugins/yaml-toolkit/logs/${timestamp}.log`;
 }

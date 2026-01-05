@@ -47,14 +47,14 @@ describe('Logger', () => {
 	describe('generateLogPath', () => {
 		it('should generate path with timestamp', () => {
 			const path = generateLogPath();
-			expect(path).toMatch(/^\.obsidian\/plugins\/yaml-manipulator\/logs\/\d{4}-\d{2}-\d{2}_\d{2}-\d{2}-\d{2}\.log$/);
+			expect(path).toMatch(/^\.obsidian\/plugins\/yaml-toolkit\/logs\/\d{4}-\d{2}-\d{2}_\d{2}-\d{2}-\d{2}\.log$/);
 		});
 
 		it('should generate unique paths', () => {
 			const path1 = generateLogPath();
 			const path2 = generateLogPath();
 			// Paths might be same if called in same second, but structure should be correct
-			expect(path1).toContain('.obsidian/plugins/yaml-manipulator/logs/');
+			expect(path1).toContain('.obsidian/plugins/yaml-toolkit/logs/');
 			expect(path1).toMatch(/\.log$/);
 		});
 	});
