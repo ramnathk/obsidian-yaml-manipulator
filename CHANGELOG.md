@@ -1,12 +1,14 @@
 # Changelog
 
 ## [1.3.3] - 2026-01-05
-**26** commits in this release
+**28** commits in this release
 
 
 
 ### 📝 Other Changes
 
+- Fix E2E tests to always rebuild plugin before running (c5caaa1)
+- Karthikeyan R ()
 - Add E2E test to verify plugin name branding (a637882)
 - Karthikeyan R ()
 - Trigger sync after Phase 2 repository rename (73ee9e4)
