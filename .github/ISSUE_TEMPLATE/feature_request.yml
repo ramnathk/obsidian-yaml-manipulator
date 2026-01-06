@@ -1,0 +1,75 @@
+name: Feature Request
+description: Suggest a new feature or enhancement
+title: "[Feature]: "
+labels: ["enhancement"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for suggesting a feature! Please describe what you'd like to see.
+
+  - type: textarea
+    id: problem
+    attributes:
+      label: Problem Statement
+      description: What problem are you trying to solve? What's the pain point?
+      placeholder: "I'm always frustrated when... I need to manually..."
+    validations:
+      required: true
+
+  - type: textarea
+    id: solution
+    attributes:
+      label: Proposed Solution
+      description: How would you like to solve this? What should the feature do?
+      placeholder: |
+        Add a new action: FOR field CAPITALIZE
+        This would uppercase the first letter of each word
+    validations:
+      required: true
+
+  - type: textarea
+    id: use-case
+    attributes:
+      label: Use Case / Example
+      description: Show a concrete example of how you'd use this feature
+      placeholder: |
+        Before:
+        ---
+        author: john smith
+        ---
+
+        Rule: FOR author CAPITALIZE
+
+        After:
+        ---
+        author: John Smith
+        ---
+    validations:
+      required: true
+
+  - type: dropdown
+    id: priority
+    attributes:
+      label: Priority / Impact
+      description: How important is this feature to your workflow?
+      options:
+        - Nice to have
+        - Would improve my workflow
+        - Critical / blocking my work
+    validations:
+      required: true
+
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: Alternatives Considered
+      description: Are there workarounds? Have you tried other approaches?
+      placeholder: "I currently do this manually / I use another plugin for..."
+
+  - type: textarea
+    id: additional-context
+    attributes:
+      label: Additional Context
+      description: Any other information, mockups, screenshots, or examples
+      placeholder: "Similar feature in other tools: ..."
