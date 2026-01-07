@@ -25,14 +25,14 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>534/534</span>
+                <span class='fraction'>536/536</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">33.33% </span>
+                <span class="strong">32.03% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>33/99</span>
+                <span class='fraction'>33/103</span>
             </div>
         
             
@@ -46,7 +46,7 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>534/534</span>
+                <span class='fraction'>536/536</span>
             </div>
         
             
@@ -597,7 +597,9 @@
 <a name='L532'></a><a href='#L532'>532</a>
 <a name='L533'></a><a href='#L533'>533</a>
 <a name='L534'></a><a href='#L534'>534</a>
-<a name='L535'></a><a href='#L535'>535</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">2x</span>
+<a name='L535'></a><a href='#L535'>535</a>
+<a name='L536'></a><a href='#L536'>536</a>
+<a name='L537'></a><a href='#L537'>537</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -720,16 +722,18 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">31x</span>
-<span class="cline-any cline-yes">31x</span>
-<span class="cline-any cline-yes">31x</span>
-<span class="cline-any cline-yes">31x</span>
-<span class="cline-any cline-yes">31x</span>
-<span class="cline-any cline-yes">31x</span>
-<span class="cline-any cline-yes">31x</span>
-<span class="cline-any cline-yes">31x</span>
-<span class="cline-any cline-yes">31x</span>
-<span class="cline-any cline-yes">31x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">34x</span>
+<span class="cline-any cline-yes">34x</span>
+<span class="cline-any cline-yes">34x</span>
+<span class="cline-any cline-yes">34x</span>
+<span class="cline-any cline-yes">34x</span>
+<span class="cline-any cline-yes">34x</span>
+<span class="cline-any cline-yes">34x</span>
+<span class="cline-any cline-yes">34x</span>
+<span class="cline-any cline-yes">34x</span>
+<span class="cline-any cline-yes">34x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -1134,7 +1138,7 @@
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">&lt;script&gt;
 	import { onMount } from 'svelte';
 	import { Notice } from 'obsidian';
-	import { createNewRule, saveRule, deleteRule } from '../storage/ruleStorage';
+	import { createNewRule, saveRule, deleteRule, loadPluginData } from '../storage/ruleStorage';
 	import { scanFiles } from '../core/fileScanner';
 	import { processBatch } from '../core/batchProcessor';
 	import { parseCondition } from '../parser/conditionParser';
@@ -1183,9 +1187,9 @@
 		}
 &nbsp;
 		return [...plugin.data.rules].sort((a, b) =&gt; {
-			if (a.lastUsed &amp;&amp; b.lastUsed) return b.lastUsed.localeCompare(a.lastUsed);
-			if (a.lastUsed) return -1;
-			if (b.lastUsed) return 1;
+			if (a.lastUsed<span class="branch-0 cbranch-no" title="branch not covered" > &amp;&amp; b.lastUsed<span class="branch-0 cbranch-no" title="branch not covered" >)</span> return b.lastUsed.localeCompare(a.lastUsed);</span>
+			if (a.lastUsed<span class="branch-0 cbranch-no" title="branch not covered" >) return -1;</span>
+			if (b.lastUsed<span class="branch-0 cbranch-no" title="branch not covered" >) return 1;</span>
 			return b.created.localeCompare(a.created);
 		});
 	})();
@@ -1234,7 +1238,8 @@
 		currentRule.options.backup = backup;
 &nbsp;
 		await saveRule(plugin, currentRule);
-		await plugin.saveSettings();
+		// Reload plugin.data from disk to sync in-memory state
+		plugin.data = await loadPluginData(plugin);
 		selectedRuleId = currentRule.id;
 &nbsp;
 		new Notice(t('notices.ruleSaved'));
@@ -1243,7 +1248,8 @@
 	async function deleteCurrentRule() {
 		if (!selectedRuleId) return;
 		await deleteRule(plugin, selectedRuleId);
-		await plugin.saveSettings();
+		// Reload plugin.data from disk to sync in-memory state
+		plugin.data = await loadPluginData(plugin);
 		newRule();
 &nbsp;
 		new Notice(t('notices.ruleDeleted'));
@@ -1672,7 +1678,7 @@
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2026-01-06T23:14:57.188Z
+                at 2026-01-07T02:05:44.284Z
             </div>
         <script src="../../prettify.js"></script>
         <script>

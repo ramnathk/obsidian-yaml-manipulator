@@ -682,9 +682,9 @@ describe('RuleBuilderModal UI Tests', () => {
 			const saveBtn = screen.getByRole('button', { name: /Save Rule/i });
 			await fireEvent.click(saveBtn);
 
-			// Should save settings
+			// Should reload plugin data to sync in-memory state
 			await waitFor(() => {
-				expect(mockPlugin.saveSettings).toHaveBeenCalled();
+				expect(mockPlugin.loadData).toHaveBeenCalled();
 			});
 		});
 	});

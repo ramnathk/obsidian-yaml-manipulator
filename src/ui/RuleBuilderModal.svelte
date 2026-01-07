@@ -1,7 +1,7 @@
 <script>
 	import { onMount } from 'svelte';
 	import { Notice } from 'obsidian';
-	import { createNewRule, saveRule, deleteRule } from '../storage/ruleStorage';
+	import { createNewRule, saveRule, deleteRule, loadPluginData } from '../storage/ruleStorage';
 	import { scanFiles } from '../core/fileScanner';
 	import { processBatch } from '../core/batchProcessor';
 	import { parseCondition } from '../parser/conditionParser';
@@ -101,7 +101,8 @@
 		currentRule.options.backup = backup;
 
 		await saveRule(plugin, currentRule);
-		await plugin.saveSettings();
+		// Reload plugin.data from disk to sync in-memory state
+		plugin.data = await loadPluginData(plugin);
 		selectedRuleId = currentRule.id;
 
 		new Notice(t('notices.ruleSaved'));
@@ -110,7 +111,8 @@
 	async function deleteCurrentRule() {
 		if (!selectedRuleId) return;
 		await deleteRule(plugin, selectedRuleId);
-		await plugin.saveSettings();
+		// Reload plugin.data from disk to sync in-memory state
+		plugin.data = await loadPluginData(plugin);
 		newRule();
 
 		new Notice(t('notices.ruleDeleted'));
